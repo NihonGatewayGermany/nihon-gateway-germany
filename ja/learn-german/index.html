@@ -53,27 +53,7 @@
       color: inherit;
       text-decoration: none;
     }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(255, 255, 255, 0.78);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .header-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 14px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
+.logo {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -460,35 +440,7 @@
       border: 1px solid var(--line);
       color: var(--muted);
     }
-
-    .site-footer {
-      border-top: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.76);
-      padding: 30px 22px;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a:hover {
-      color: var(--hover-pink);
-    }
-
-    @media (max-width: 980px) {
+@media (max-width: 980px) {
       .entry-grid,
       .topic-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -508,12 +460,7 @@
     }
 
     @media (max-width: 640px) {
-      .header-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .hero {
+.hero {
         padding: 38px 24px;
         min-height: 320px;
       }
@@ -529,18 +476,10 @@
         display: block;
       }
     }
-  
-/* Shared header dropdown/menu support */
-.header-category-menu{position:relative;display:flex;align-items:center;}
-.header-category-menu::before{content:"";position:absolute;left:0;top:100%;width:100%;height:12px;}
-.header-category-trigger{border:none;background:transparent;color:var(--text,#16202a);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;}
-.header-category-menu::after{content:"▾";font-size:24px;line-height:1;color:var(--muted,#5f6b76);margin-top:1px;pointer-events:none;}
-.category-dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:220px;background:#fff;border:1px solid var(--line,#e6eaf0);border-radius:14px;box-shadow:0 16px 30px rgba(19,35,58,.14);padding:8px;display:none;z-index:20;}
-.header-category-menu:hover .category-dropdown,.header-category-menu:focus-within .category-dropdown{display:grid;gap:2px;}
-.category-dropdown a{text-decoration:none;font-size:13px;color:#2f3e4c;padding:8px 10px;border-radius:10px;}
-.category-dropdown a:hover{background:var(--hover-pink-bg,#fff4f7);border:1px solid var(--hover-pink,#f3c8d4);color:var(--brand,#d84b6a);transform:translateY(-1px);}
+
 
 </style>
+  <link rel="stylesheet" href="../../assets/css/ja-header-footer.css">
 </head>
 
 <body>
@@ -556,7 +495,7 @@
 
     <div class="header-actions">
       <nav class="header-nav" aria-label="メインナビゲーション">
-        <a href="../">ホーム</a>
+        <a href="../" class="active">ホーム</a>
         <a href="../about/">このサイトについて</a>
       </nav>
 
@@ -870,18 +809,28 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span>© Nihon Gateway Germany</span>
-      <div class="footer-links">
-        <a href="../">Home</a>
-        <a href="../news/">News</a>
-        <a href="../jobs/">Jobs</a>
-        <a href="../shopping/">Shopping</a>
+  <footer class="page-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+<img class="footer-logo" src="../../assets/images/brand/logo_footer.png" alt="Nihon Gateway Germany フッターロゴ">
+          <div class="footer-copy">
+            <div class="footer-title">NIHON GATEWAY GERMANY</div>
+            <div class="footer-sub">ドイツと日本をつなぐ総合ポータル</div>
+            <div class="footer-meta">© 2026 Nihon Gateway Germany</div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="../about/">このサイトについて</a>
+          <a href="../contact/">お問い合わせ</a>
+          <a href="../terms/">利用規約</a>
+          <a href="../privacy/">プライバシー</a>
+          <a href="../impressum/">運営者情報</a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
   <script src="../../assets/js/learn-german.js"></script>
+<script src="../../assets/js/main.js"></script>
 </body>
 </html>

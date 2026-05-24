@@ -768,6 +768,7 @@
       document.head.appendChild(js);
     })();
   </script>
+  <link rel="stylesheet" href="../../assets/css/ja-header-footer.css">
 </head>
 
 <body>
@@ -783,7 +784,7 @@
 
     <div class="header-actions">
       <nav class="header-nav" aria-label="メインナビゲーション">
-        <a href="../">ホーム</a>
+        <a href="../" class="active">ホーム</a>
         <a href="../about/">このサイトについて</a>
       </nav>
 
@@ -814,7 +815,7 @@
       <label class="header-language" aria-label="言語切り替え">
         <span>Language</span>
         <select id="languageSelect">
-          <option value="../">日本語</option>
+          <option value="../../">日本語</option>
           <option value="../../">English</option>
           <option value="../../de/">Deutsch</option>
           <option value="../../zh/">中文</option>
@@ -904,25 +905,25 @@
   </main>
 
   <footer class="page-footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <img class="footer-logo" src="../../assets/images/brand/logo_footer.png" alt="Nihon Gateway Germany フッターロゴ">
-        <div>
-          <div class="footer-title">NIHON GATEWAY GERMANY</div>
-          <div class="footer-sub">ドイツと日本をつなぐ総合ポータル</div>
-          <div class="footer-meta">© 2026 Nihon Gateway Germany</div>
+      <div class="footer-inner">
+        <div class="footer-left">
+<img class="footer-logo" src="../../assets/images/brand/logo_footer.png" alt="Nihon Gateway Germany フッターロゴ">
+          <div class="footer-copy">
+            <div class="footer-title">NIHON GATEWAY GERMANY</div>
+            <div class="footer-sub">ドイツと日本をつなぐ総合ポータル</div>
+            <div class="footer-meta">© 2026 Nihon Gateway Germany</div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="../about/">このサイトについて</a>
+          <a href="../contact/">お問い合わせ</a>
+          <a href="../terms/">利用規約</a>
+          <a href="../privacy/">プライバシー</a>
+          <a href="../impressum/">運営者情報</a>
         </div>
       </div>
-
-      <div class="footer-links">
-        <a href="/nihon-gateway-germany/ja/about/">このサイトについて</a>
-        <a href="/nihon-gateway-germany/ja/contact/">お問い合わせ</a>
-        <a href="/nihon-gateway-germany/ja/terms/">利用規約</a>
-        <a href="/nihon-gateway-germany/ja/privacy/">プライバシー</a>
-        <a href="/nihon-gateway-germany/ja/impressum/">運営者情報</a>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -1426,5 +1427,6 @@
     "about":"Düsseldorf medical information for Japanese residents and visitors"
   }
   </script>
+<script src="../../assets/js/main.js"></script>
 </body>
 </html>
