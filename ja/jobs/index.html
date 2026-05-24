@@ -36,6 +36,7 @@
       --card-shadow:0 10px 30px rgba(26,16,20,.07);
       --radius-xl:28px;
       --max:1380px;
+      --sticky-offset:92px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -342,7 +343,7 @@
 
     .filters{
       position:sticky;
-      top:92px;
+      top:var(--sticky-offset);
       padding:20px;
     }
 
@@ -584,9 +585,13 @@
       line-clamp:2;
     }
 
-    .detail{
+    .detail-wrap{
       position:sticky;
-      top:92px;
+      top:var(--sticky-offset);
+      align-self:start;
+    }
+
+    .detail{
       padding:30px;
       min-width:0;
     }
@@ -765,9 +770,6 @@
 
       .detail-wrap{
         grid-column:1/-1;
-      }
-
-      .detail{
         position:static;
       }
     }
