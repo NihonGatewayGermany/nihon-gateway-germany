@@ -634,8 +634,8 @@
     }
 
     function detailUrl(post) {
-      const url = new URL(location.pathname, location.origin);
-      url.searchParams.set("post", String(post._id));
+      const url = new URL("./post/", location.href);
+      url.searchParams.set("id", String(post._id));
       return url.href;
     }
 
@@ -1023,7 +1023,7 @@
     function currentDetailPostId() {
       const match = decodeURIComponent(location.hash || "").match(/^#post-(.+)$/);
       if (match) return match[1];
-      return new URLSearchParams(location.search).get("post") || "";
+      return "";
     }
 
     function postByHash() {
@@ -1137,11 +1137,8 @@
     function closeDetail(updateHash = true) {
       els.modal.classList.remove("open");
       document.body.style.overflow = "";
-      if (updateHash && (location.hash.startsWith("#post-") || new URLSearchParams(location.search).has("post"))) {
-        const url = new URL(location.href);
-        url.searchParams.delete("post");
-        url.hash = "";
-        history.pushState("", document.title, url.pathname + (url.search ? url.search : ""));
+      if (updateHash && location.hash.startsWith("#post-")) {
+        history.pushState("", document.title, location.pathname + location.search);
       }
     }
 
