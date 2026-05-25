@@ -34,7 +34,7 @@
 
     body{
       background:
-        linear-gradient(rgba(247,248,250,.94), rgba(247,248,250,.97)),
+        linear-gradient(rgba(247,248,250,.975), rgba(247,248,250,.988)),
         url("../../assets/images/brand/site-bg.jpg") center top / cover fixed no-repeat,
         var(--community-bg);
       color:var(--community-ink);
@@ -55,16 +55,16 @@
         linear-gradient(110deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.90) 58%, rgba(255,255,255,.80) 100%),
         url("../../assets/images/cards/community.jpg") right center / min(42vw, 520px) auto no-repeat,
         #fff;
-      box-shadow:var(--community-shadow);
-      padding:18px;
+      box-shadow:0 12px 28px rgba(25,39,52,.08);
+      padding:16px;
     }
 
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.48fr);gap:14px;align-items:center}
     .hero-copy{min-width:0}
     .hero-kicker{display:flex;align-items:center;gap:8px;color:var(--community-brand);font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
     .hero-kicker::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--community-brand)}
-    .hero-title{font-size:clamp(26px,3.35vw,38px);line-height:1.12;letter-spacing:0;font-weight:900;margin-top:7px;max-width:760px}
-    .hero-desc{max-width:760px;margin-top:7px;color:#465360;font-size:14px;line-height:1.65}
+    .hero-title{font-size:clamp(26px,3.1vw,36px);line-height:1.12;letter-spacing:0;font-weight:900;margin-top:7px;max-width:760px}
+    .hero-desc{max-width:760px;margin-top:7px;color:#465360;font-size:14px;line-height:1.6}
     .hero-search{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:13px;max-width:760px}
     .search-control{position:relative}
     .search-control input{width:100%;height:48px;border:1.5px solid var(--community-line-strong);border-radius:16px;background:#fff;padding:0 44px 0 44px;outline:none;box-shadow:0 8px 20px rgba(25,39,52,.05)}
@@ -91,18 +91,24 @@
     .btn-secondary{background:#fff;color:#24313d;border-color:var(--community-line-strong)}
     .btn-soft{background:#f7fafc;color:#24313d;border-color:var(--community-line)}
     .hero-helper{margin-top:7px;color:#5d6975;font-size:12px;font-weight:800}
+    .hero-insight{border:1px solid var(--community-line);background:rgba(255,255,255,.88);border-radius:18px;padding:12px;box-shadow:0 8px 18px rgba(25,39,52,.05)}
+    .hero-insight-label{font-size:11px;font-weight:900;color:#697684}
+    .hero-insight-title{font-size:15px;font-weight:900;margin-top:4px;line-height:1.35}
+    .hero-insight-meta{font-size:12px;color:#5c6975;font-weight:800;margin-top:4px}
+    .hero-insight-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .mini-link{border:1px solid var(--community-line);background:#fff;border-radius:999px;min-height:34px;padding:0 11px;font-size:12px;font-weight:900;color:#34414d}
 
     .chip-button{
       border:1px solid var(--community-line);
       background:#fff;
       color:#2f3a45;
-      min-height:40px;
+      min-height:36px;
       border-radius:999px;
-      padding:0 13px;
+      padding:0 12px;
       display:inline-flex;
       align-items:center;
       gap:7px;
-      font-size:13px;
+      font-size:12px;
       font-weight:900;
       white-space:nowrap;
       transition:background .16s ease,border-color .16s ease,transform .16s ease;
@@ -120,22 +126,24 @@
       border:1px solid rgba(223,230,238,.9);
       border-radius:18px;
       box-shadow:0 12px 26px rgba(25,39,52,.08);
-      padding:10px;
+      padding:8px;
     }
-    .filter-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
-    .filter-row{display:flex;align-items:center;gap:10px;min-width:0;overflow:hidden}
+    .filter-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:7px}
+    .filter-row{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden}
     .filter-label{font-size:12px;font-weight:900;color:#627080;white-space:nowrap}
-    .filter-rail,.utility-rail,.sort-segment{display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding:2px;min-width:0;max-width:100%;flex:1 1 auto}
-    .filter-controls{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center}
-    .select{height:40px;border:1px solid var(--community-line);background:#fff;border-radius:999px;padding:0 12px;color:#283541;font-weight:800;outline:none}
+    .filter-rail,.utility-rail,.sort-segment{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin;padding:1px;min-width:0;max-width:100%;flex:1 1 auto}
+    .filter-controls{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
+    .select{height:36px;border:1px solid var(--community-line);background:#fff;border-radius:999px;padding:0 11px;color:#283541;font-weight:800;outline:none;font-size:12px}
     .toggle-chip{position:relative}
     .toggle-chip input{position:absolute;opacity:0;inset:0}
-    .toggle-chip span{border:1px solid var(--community-line);background:#fff;border-radius:999px;min-height:40px;padding:0 12px;display:inline-flex;align-items:center;font-size:13px;font-weight:900;color:#2f3a45}
+    .toggle-chip span{border:1px solid var(--community-line);background:#fff;border-radius:999px;min-height:36px;padding:0 11px;display:inline-flex;align-items:center;font-size:12px;font-weight:900;color:#2f3a45}
     .toggle-chip input:checked + span{background:#eaf3ff;border-color:#b8d3ff;color:#1953b8}
-    .sort-button{min-height:40px;border:1px solid var(--community-line);background:#fff;color:#34414d;border-radius:999px;padding:0 12px;font-size:13px;font-weight:900;white-space:nowrap}
+    .sort-button{min-height:36px;border:1px solid var(--community-line);background:#fff;color:#34414d;border-radius:999px;padding:0 11px;font-size:12px;font-weight:900;white-space:nowrap}
     .sort-button.active{background:#17202a;color:#fff;border-color:#17202a}
-    .activity-bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0 0}
-    .activity-card{background:#fff;border:1px solid var(--community-line);border-radius:14px;padding:10px 12px;min-width:0;box-shadow:0 8px 18px rgba(25,39,52,.05)}
+    .activity-bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 0}
+    .activity-card{background:#fff;border:1px solid var(--community-line);border-radius:14px;padding:10px 12px;min-width:0;box-shadow:0 8px 18px rgba(25,39,52,.05);text-align:left;color:inherit}
+    .activity-card:is(button){cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .activity-card:is(button):hover{transform:translateY(-1px);border-color:#cbd8e4;box-shadow:0 12px 22px rgba(25,39,52,.08)}
     .activity-label{font-size:11px;font-weight:900;color:#697684}
     .activity-value{font-size:14px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .search-suggestions{display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;margin-top:10px;padding:1px;max-width:100%}
@@ -159,26 +167,28 @@
       position:relative;
     }
     .card:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(25,39,52,.12);border-color:#c8d4df}
+    .card:active{transform:translateY(0)}
     .card-link{color:inherit;display:flex;flex-direction:column;height:100%;overflow:hidden}
-    .card-media{position:relative;aspect-ratio:4/3;background:#eef3f6;overflow:hidden}
+    .card-media{position:relative;aspect-ratio:16/10;background:#eef3f6;overflow:hidden}
     .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;background:#eef3f6}
     .placeholder-art{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,#f7fbff 0%,#eef5f0 100%);color:#3d4a56}
     .placeholder-art::before{content:attr(data-icon);width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:#fff;border:1px solid rgba(205,216,227,.9);box-shadow:0 10px 22px rgba(25,39,52,.08);font-size:30px}
     .image-count{position:absolute;right:9px;bottom:9px;z-index:3;background:rgba(23,32,42,.78);color:#fff;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900}
-    .card-body{padding:12px;display:flex;flex-direction:column;gap:8px;min-height:178px}
+    .card-body{padding:11px;display:flex;flex-direction:column;gap:7px;min-height:166px}
     .card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-right:38px}
     .category-badge,.price-badge,.trust-badge{display:inline-flex;align-items:center;border-radius:999px;font-size:11px;font-weight:900;line-height:1;padding:6px 8px;max-width:100%;white-space:nowrap}
     .category-badge{background:#edf7f5;color:#067366}
     .price-badge{background:#fff5d7;color:#7b5000}
-    .price-badge.free{background:#ebf8ef;color:#17643b}
-    .card-title{font-size:16px;font-weight:900;line-height:1.35;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-    .card-meta{display:flex;flex-wrap:wrap;gap:6px;color:#52606e;font-size:12px;font-weight:800}
+    .price-badge.free{background:#def7e8;color:#0f6a3d;border:1px solid #bde9cd}
+    .card-title{font-size:16px;font-weight:900;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+    .card-meta{display:flex;flex-wrap:wrap;gap:6px;color:#465461;font-size:12px;font-weight:900}
     .card-excerpt{color:#536170;font-size:13px;line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
     .trust-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
     .trust-badge{background:#f2f5f8;color:#536170}
-    .trust-badge.urgent{background:#fff0e7;color:#a54912}
+    .trust-badge.urgent{background:#fff0e7;color:#a54912;border:1px solid #ffd5bb}
     .trust-badge.japanese{background:#fff1f5;color:#a83252}
-    .save-button{position:absolute;right:10px;top:10px;z-index:5;width:36px;height:36px;border-radius:999px;border:1px solid rgba(205,216,227,.9);background:rgba(255,255,255,.94);box-shadow:0 8px 18px rgba(25,39,52,.10);font-size:18px;line-height:1;color:#52606e}
+    .save-button{position:absolute;right:10px;top:10px;z-index:5;width:36px;height:36px;border-radius:999px;border:1px solid rgba(205,216,227,.9);background:rgba(255,255,255,.94);box-shadow:0 8px 18px rgba(25,39,52,.10);font-size:18px;line-height:1;color:#52606e;transition:transform .16s ease,background .16s ease,color .16s ease}
+    .save-button:active{transform:scale(.94)}
     .save-button.saved{background:#17202a;color:#fff;border-color:#17202a}
     .save-button.inline{position:static;width:auto;min-height:46px;padding:0 14px;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:900}
 
@@ -253,6 +263,7 @@
     @media (max-width:1180px){
       .board-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
       .hero-grid{grid-template-columns:1fr}
+      .hero-insight{max-width:760px}
     }
 
     @media (max-width:860px){
@@ -261,6 +272,7 @@
       .hero-search{grid-template-columns:1fr 1fr}
       .hero-search .search-control{grid-column:1/-1}
       .hero-actions{display:grid;grid-template-columns:1fr 1fr}
+      .hero-insight{display:none}
       .filter-bar{top:0;border-radius:0;margin-left:-12px;margin-right:-12px;border-left:none;border-right:none}
       .filter-grid{grid-template-columns:1fr}
       .filter-controls{grid-template-columns:1fr;gap:8px}
@@ -382,14 +394,23 @@
           </div>
           <p class="hero-helper">30秒で投稿・写真だけでもOK・日本語で簡単</p>
         </div>
+        <aside class="hero-insight" aria-label="注目投稿">
+          <div class="hero-insight-label">今よく見られている投稿</div>
+          <div class="hero-insight-title" id="heroInsightTitle">投稿を読み込み中</div>
+          <div class="hero-insight-meta" id="heroInsightMeta">地域とカテゴリを確認しています</div>
+          <div class="hero-insight-actions">
+            <a class="mini-link" id="heroInsightLink" href="#communityBoard">詳細を見る</a>
+            <button class="mini-link" id="heroAreaButton" type="button">注目地域を見る</button>
+          </div>
+        </aside>
       </div>
     </section>
 
     <section class="activity-bar" aria-label="コミュニティの動き">
-      <div class="activity-card"><div class="activity-label">本日</div><div class="activity-value" id="todayCount">確認中</div></div>
-      <div class="activity-card"><div class="activity-label">人気カテゴリ</div><div class="activity-value" id="popularCategory">集計中</div></div>
-      <div class="activity-card"><div class="activity-label">注目地域</div><div class="activity-value" id="popularArea">集計中</div></div>
-      <div class="activity-card"><div class="activity-label">保存済み</div><div class="activity-value" id="savedCount">0件</div></div>
+      <button class="activity-card" type="button" id="todayActivity"><div class="activity-label">本日</div><div class="activity-value" id="todayCount">確認中</div></button>
+      <button class="activity-card" type="button" id="categoryActivity"><div class="activity-label">人気カテゴリ</div><div class="activity-value" id="popularCategory">集計中</div></button>
+      <button class="activity-card" type="button" id="areaActivity"><div class="activity-label">注目地域</div><div class="activity-value" id="popularArea">集計中</div></button>
+      <button class="activity-card" type="button" id="savedActivity"><div class="activity-label">保存済み</div><div class="activity-value" id="savedCount">気になる投稿を保存</div></button>
     </section>
 
     <section class="filter-bar" aria-label="検索と絞り込み">
@@ -540,6 +561,9 @@
       photoOnly: false,
       savedOnly: false,
       saved: new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")),
+      popularCategory: "",
+      popularArea: "",
+      spotlightId: "",
       loading: true
     };
 
@@ -558,12 +582,20 @@
       resultText: document.getElementById("resultText"),
       activeFilters: document.getElementById("activeFilters"),
       searchSuggestions: document.getElementById("searchSuggestions"),
+      heroInsightTitle: document.getElementById("heroInsightTitle"),
+      heroInsightMeta: document.getElementById("heroInsightMeta"),
+      heroInsightLink: document.getElementById("heroInsightLink"),
+      heroAreaButton: document.getElementById("heroAreaButton"),
       emptyState: document.getElementById("emptyState"),
       emptyClear: document.getElementById("emptyClear"),
       todayCount: document.getElementById("todayCount"),
       popularCategory: document.getElementById("popularCategory"),
       popularArea: document.getElementById("popularArea"),
       savedCount: document.getElementById("savedCount"),
+      todayActivity: document.getElementById("todayActivity"),
+      categoryActivity: document.getElementById("categoryActivity"),
+      areaActivity: document.getElementById("areaActivity"),
+      savedActivity: document.getElementById("savedActivity"),
       modal: document.getElementById("detailModal"),
       detailContent: document.getElementById("detailContent")
     };
@@ -702,7 +734,7 @@
 
     function persistSaved() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify([...state.saved]));
-      if (els.savedCount) els.savedCount.textContent = `${state.saved.size}件`;
+      if (els.savedCount) els.savedCount.textContent = state.saved.size ? `${state.saved.size}件` : "気になる投稿を保存";
     }
 
     function toggleSaved(postId) {
@@ -726,8 +758,7 @@
 
       document.querySelectorAll("[data-category]").forEach((button) => {
         button.addEventListener("click", () => {
-          state.category = button.dataset.category || "すべて";
-          applyFilters();
+          setCategory(button.dataset.category || "すべて");
         });
       });
     }
@@ -736,6 +767,20 @@
       els.sortSegment.querySelectorAll("[data-sort]").forEach((button) => {
         button.classList.toggle("active", button.dataset.sort === state.sort);
       });
+    }
+
+    function setCategory(category) {
+      state.category = category || "すべて";
+      document.getElementById("communityBoard").scrollIntoView({ behavior: "smooth", block: "start" });
+      applyFilters();
+    }
+
+    function setArea(area, options = {}) {
+      if (!area) return;
+      if (options.clearCategory) state.category = "すべて";
+      els.areaFilter.value = area;
+      document.getElementById("communityBoard").scrollIntoView({ behavior: "smooth", block: "start" });
+      applyFilters();
     }
 
     function renderAreas() {
@@ -868,10 +913,23 @@
 
       const byCategory = countBy(state.posts, "_category");
       const byArea = countBy(state.posts, "_location");
-      els.popularCategory.textContent = topKey(byCategory) || "家具・部屋";
-      els.popularArea.textContent = topKey(byArea) || "Berlin / NRW";
+      state.popularCategory = topKey(byCategory) || "家具";
+      state.popularArea = topKey(byArea) || "";
+      els.popularCategory.textContent = state.popularCategory;
+      els.popularArea.textContent = state.popularArea || "地域を選ぶ";
       persistSaved();
       renderSearchSuggestions();
+      renderHeroInsight();
+    }
+
+    function renderHeroInsight() {
+      const spotlight = [...state.posts].sort((a, b) => scorePost(b) - scorePost(a))[0];
+      if (!spotlight) return;
+      state.spotlightId = spotlight._id;
+      els.heroInsightTitle.textContent = spotlight._title;
+      els.heroInsightMeta.textContent = `${spotlight._location} / ${spotlight._free ? "無料" : (spotlight._price || spotlight._category)}`;
+      els.heroInsightLink.href = `#post-${encodeURIComponent(spotlight._id)}`;
+      els.heroAreaButton.textContent = state.popularArea ? `${state.popularArea.split(" / ")[0]}の投稿を見る` : "注目地域を見る";
     }
 
     function renderSearchSuggestions() {
@@ -937,8 +995,18 @@
 
     function openDetail(post) {
       const related = state.posts
-        .filter((item) => item._id !== post._id && (item._category === post._category || item._location === post._location))
-        .slice(0, 3);
+        .filter((item) => item._id !== post._id)
+        .map((item) => ({
+          item,
+          score:
+            (item._category === post._category ? 8 : 0) +
+            (item._location === post._location ? 5 : 0) +
+            (item._free ? 2 : 0) +
+            Math.min(3, dateValue(item._date) / 1000000000000)
+        }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3)
+        .map(({ item }) => item);
       const images = post._images.length ? post._images : [];
       const mainImage = images[0];
       const saved = isSaved(post._id);
@@ -1074,6 +1142,19 @@
         applyFilters();
       });
     });
+    els.categoryActivity.addEventListener("click", () => setCategory(state.popularCategory || "すべて"));
+    els.areaActivity.addEventListener("click", () => setArea(state.popularArea, { clearCategory: true }));
+    els.savedActivity.addEventListener("click", () => {
+      els.savedOnly.checked = true;
+      document.getElementById("communityBoard").scrollIntoView({ behavior: "smooth", block: "start" });
+      applyFilters();
+    });
+    els.todayActivity.addEventListener("click", () => {
+      state.sort = "newest";
+      document.getElementById("communityBoard").scrollIntoView({ behavior: "smooth", block: "start" });
+      applyFilters();
+    });
+    els.heroAreaButton.addEventListener("click", () => setArea(state.popularArea, { clearCategory: true }));
     document.getElementById("mobileSavedButton")?.addEventListener("click", () => {
       els.savedOnly.checked = !els.savedOnly.checked;
       document.getElementById("communityBoard").scrollIntoView({ behavior: "smooth", block: "start" });
