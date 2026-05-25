@@ -3,979 +3,981 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>交流掲示板 | Nihon Gateway Germany</title>
-  <meta name="description" content="ドイツ在住日本人向けの交流掲示板。公開閲覧 + 投稿フォーム + 管理者承認型。" />
-  <link rel="icon" type="image/jpeg" href="../../assets/images/brand/favicon.png">
+  <title>ドイツ日本人コミュニティ掲示板 | Nihon Gateway Germany</title>
+  <meta name="description" content="ドイツ在住日本人のための家具、部屋、譲ります、イベント、質問、生活サポートをすばやく探せるコミュニティマーケットプレイス。" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yoshi1234567890.github.io/nihon-gateway-germany/ja/community/" />
+  <link rel="icon" type="image/png" href="../../assets/images/brand/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../../assets/css/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+  <link rel="stylesheet" href="../../assets/css/cookie-consent.css" />
   <style>
     :root{
-      --red:#e8002d;
-      --orange:#ff6b2b;
-      --yellow:#ffc93c;
-      --teal:#00b4a6;
-      --blue:#2f6df5;
-      --purple:#7c3aed;
-      --pink:#f472b6;
-      --cream:#fdf8f2;
-      --paper:#fffdf9;
-      --ink:#1a1014;
-      --muted:#6b5e68;
-      --border:#ede5e0;
-      --card-shadow:0 10px 30px rgba(26,16,20,.07);
-      --radius-xl:28px;
-      --radius-lg:20px;
-      --radius-md:14px;
-      --radius-sm:10px;
-      --max:1380px;
-      --brand:#d84b6a;
---hover-pink:#f3c8d4;
---hover-pink-bg:#fff4f7;
-      --sticky-offset:92px;
+      --community-bg:#f6f7f8;
+      --community-paper:#fff;
+      --community-ink:#17202a;
+      --community-muted:#66717d;
+      --community-soft:#eef3f6;
+      --community-line:#dfe6ee;
+      --community-line-strong:#cdd8e3;
+      --community-brand:#d84b6a;
+      --community-blue:#2563eb;
+      --community-teal:#0f9f8e;
+      --community-green:#168a52;
+      --community-orange:#d66a1f;
+      --community-yellow:#f5b91f;
+      --community-radius:18px;
+      --community-shadow:0 14px 32px rgba(25,39,52,.10);
+      --community-max:1320px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+
     body{
-      font-family:'Outfit','Noto Sans JP','Hiragino Sans','Yu Gothic UI',sans-serif;
       background:
-        linear-gradient(rgba(247,248,250,.78), rgba(247,248,250,.82)),
+        linear-gradient(rgba(247,248,250,.94), rgba(247,248,250,.97)),
         url("../../assets/images/brand/site-bg.jpg") center top / cover fixed no-repeat,
-        var(--cream);
-      color:var(--ink);
-      line-height:1.6;
+        var(--community-bg);
+      color:var(--community-ink);
     }
-    a{text-decoration:none;color:inherit}
+
+    a{text-decoration:none}
     button,input,select{font:inherit}
-.container{width:min(var(--max), calc(100% - 32px));margin:0 auto;}
+    button{cursor:pointer}
+    .community-shell{width:min(var(--community-max), calc(100% - 32px));margin:0 auto;padding:18px 0 84px}
+    .skip-link{position:absolute;left:16px;top:-60px;z-index:500;background:#fff;color:#111;padding:10px 14px;border-radius:999px;border:1px solid var(--community-line)}
+    .skip-link:focus{top:12px}
 
-    .hero{max-width:var(--max);margin:0 auto;padding:26px 20px 14px;}
-    .hero-box{
-      position:relative;
-      overflow:hidden;
+    .community-hero{
+      border:1px solid var(--community-line);
+      border-radius:24px;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,.32) 42%, rgba(255,255,255,.18) 60%, rgba(255,255,255,.08) 100%),
-        url("../../assets/images/hero/top-hero.jpg") center center / cover no-repeat,
+        linear-gradient(110deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.90) 58%, rgba(255,255,255,.80) 100%),
+        url("../../assets/images/cards/community.jpg") right center / min(42vw, 520px) auto no-repeat,
         #fff;
-      border:1px solid #d9e0e8;
-      border-radius:34px;
-      padding:24px 24px 22px;
-      box-shadow:var(--card-shadow);
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:16px;
-      align-items:start;
+      box-shadow:var(--community-shadow);
+      padding:18px;
     }
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
-    .eyebrow-dot{width:9px;height:9px;border-radius:999px;background:linear-gradient(135deg,var(--red),var(--orange));flex:0 0 auto;}
-    .hero h1{font-size:clamp(30px,4vw,46px);line-height:1.06;margin-bottom:10px;letter-spacing:-.03em;}
-    .hero p{font-size:15px;color:#5a5260;line-height:1.75;max-width:780px;}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:14px;padding:0 18px;min-height:44px;font-weight:800;cursor:pointer;transition:.18s ease;}
-    .btn:hover{transform:translateY(-2px)}
-    .btn-primary{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;box-shadow:0 8px 20px rgba(47,109,245,.2)}
-    .btn-secondary{background:#fff;color:#2f3e4c;border:1px solid #dce4ee}
-    .hero-side{background:rgba(255,255,255,.88);border:1px solid #e6eaf0;border-radius:20px;padding:14px;backdrop-filter:blur(4px)}
-    .hero-side h2{margin-bottom:10px;font-size:.95rem}
-    .quick-list{display:grid;gap:8px}
-    .quick{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:9px;min-width:0}
-    .quick-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(47,109,245,.08);font-size:18px;flex:0 0 36px}
-    .quick strong,
-    .quick span{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
-    .quick strong{font-size:.88rem;margin-bottom:1px;-webkit-line-clamp:1;line-clamp:1}
-    .quick span{color:var(--muted);font-size:.78rem;line-height:1.45;-webkit-line-clamp:2;line-clamp:2}
 
-    .layout{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:20px 20px 80px;
-      display:grid;
-      grid-template-columns:280px minmax(430px,480px) minmax(0,1fr);
-      gap:22px;
-      align-items:start;
-    }
-    .panel{
-      background:var(--paper);
-      border:1px solid var(--border);
-      border-radius:var(--radius-xl);
-      box-shadow:var(--card-shadow);
-    }
-    .filters{
-      position:sticky;
-      top:var(--sticky-offset);
-      padding:20px;
-    }
-    .field{margin-bottom:14px}
-    .label{
-      display:block;
-      font-size:13px;
-      font-weight:800;
-      color:#4c404c;
-      margin-bottom:8px;
-    }
-    .input,
-    .select{
-      width:100%;
-      border:1px solid var(--border);
+    .hero-grid{display:grid;grid-template-columns:minmax(540px,1fr) minmax(360px,.72fr);gap:18px;align-items:center}
+    .hero-copy{min-width:0}
+    .hero-kicker{display:flex;align-items:center;gap:8px;color:var(--community-brand);font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .hero-kicker::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--community-brand)}
+    .hero-title{font-size:clamp(26px,3.35vw,38px);line-height:1.12;letter-spacing:0;font-weight:900;margin-top:7px;max-width:760px}
+    .hero-desc{max-width:760px;margin-top:7px;color:#465360;font-size:14px;line-height:1.65}
+    .hero-search{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;margin-top:13px;max-width:820px}
+    .search-control{position:relative}
+    .search-control input{width:100%;height:48px;border:1.5px solid var(--community-line-strong);border-radius:16px;background:#fff;padding:0 16px 0 44px;outline:none;box-shadow:0 8px 20px rgba(25,39,52,.05)}
+    .search-control input:focus{border-color:var(--community-blue);box-shadow:0 0 0 4px rgba(37,99,235,.13)}
+    .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#7c8794;font-weight:900}
+    .hero-actions{display:flex;gap:10px}
+    .btn{
+      min-height:46px;
+      border:1px solid transparent;
       border-radius:14px;
-      background:#fff;
-      padding:13px 14px;
-      outline:none;
-      color:var(--ink);
-    }
-    .input:focus,
-    .select:focus{
-      border-color:#a9bdd8;
-      box-shadow:0 0 0 3px rgba(47,109,245,.1);
-    }
-    .reset-btn{
-      border:none;
-      background:transparent;
-      color:var(--blue);
-      font-weight:800;
-      cursor:pointer;
-    }
-    .filter-action{
-      width:100%;
-      margin-top:4px;
-    }
-    .panel-title-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:16px;
-    }
-    .panel-title{
-      font-size:18px;
-      font-weight:900;
-    }
-    .content{min-width:0}
-    .toolbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-    .results-title{
-      font-size:24px;
-      font-weight:900;
-      letter-spacing:-.02em;
-    }
-    .results-sub{
-      margin-top:6px;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      border:1px solid var(--border);
-      background:#fff;
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:13px;
-      font-weight:800;
-      color:#4e424e;
-    }
-    .cards{
-      display:grid;
-      gap:10px;
-    }
-    .card{
-      position:relative;
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:16px;
-      box-shadow:var(--card-shadow);
-      padding:14px;
-      cursor:pointer;
-      transition:.18s ease;
-      min-width:0;
-    }
-    .card,
-    .card *{
-      overflow-wrap:anywhere;
-      word-break:break-word;
-    }
-    .card:hover{transform:translateY(-2px)}
-    .card:focus-visible{
-      outline:3px solid rgba(47,109,245,.26);
-      outline-offset:2px;
-    }
-    .card.active{
-      border-color:var(--blue);
-      box-shadow:0 0 0 3px rgba(47,109,245,.14),var(--card-shadow);
-    }
-    .card-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:10px;
-      padding-right:0;
-      min-width:0;
-    }
-    .card-head > div{min-width:0}
-    .company{
-      font-size:15px;
-      font-weight:950;
-      line-height:1.32;
-    }
-    .position{
-      font-size:12.5px;
-      color:var(--muted);
-      margin-top:4px;
-      line-height:1.25;
-    }
-    .company,
-    .position,
-    .meta dd{
-      display:-webkit-box;
-      -webkit-box-orient:vertical;
-      overflow:hidden;
-    }
-    .company,
-    .position,
-    .meta dd:not(.summary){
-      -webkit-line-clamp:1;
-      line-clamp:1;
-    }
-    .badge{
-      position:static;
-      flex:0 1 auto;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      font-size:11px;
-      font-weight:900;
-      line-height:1;
-      padding:6px 8px;
-      border-radius:999px;
-      background:#fff4f7;
-      color:#b83355;
-      border:1px solid #f2c8d4;
-      white-space:nowrap;
-      max-width:140px;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      word-break:normal;
-      overflow-wrap:normal;
-    }
-    .b-teal{background:rgba(0,180,166,.12);color:var(--teal)}
-    .b-blue{background:rgba(47,109,245,.12);color:var(--blue)}
-    .b-pink{background:rgba(244,114,182,.12);color:#c54890}
-    .b-orange{background:rgba(255,107,43,.12);color:#d75b22}
-    .meta{
-      margin-top:10px;
-      display:grid;
-      grid-template-columns:1fr;
-      gap:5px;
-      font-size:12.5px;
-    }
-    .meta-row{
-      display:grid;
-      grid-template-columns:48px minmax(0,1fr);
-      gap:6px;
-      align-items:start;
-      min-width:0;
-    }
-    .meta dt{
-      font-weight:900;
-      color:#433744;
-      line-height:1.35;
-    }
-    .meta dd{
-      color:#564a55;
-      min-width:0;
-      overflow-wrap:anywhere;
-      word-break:break-word;
-      line-height:1.35;
-    }
-    .meta dd.summary{
-      -webkit-line-clamp:2;
-      line-clamp:2;
-    }
-    .detail-wrap{
-      position:sticky;
-      top:var(--sticky-offset);
-      align-self:start;
-    }
-    .detail{
-      padding:24px;
-      min-width:0;
-    }
-    .detail,
-    .detail *{
-      overflow-wrap:anywhere;
-      word-break:break-word;
-    }
-    .detail h3{
-      font-size:clamp(24px,1.9vw,28px);
-      font-weight:950;
-      line-height:1.15;
-    }
-    .detail .sub{
-      margin-top:6px;
-      color:var(--muted);
-      font-weight:700;
-      font-size:16px;
-    }
-    .detail-badges{
-      display:flex;
-      flex-wrap:wrap;
       gap:8px;
-      margin-top:14px;
+      padding:0 16px;
+      font-weight:900;
+      transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+      white-space:nowrap;
     }
-    .detail-badge{
+    .btn:hover{transform:translateY(-1px)}
+    .btn:focus-visible,.chip-button:focus-visible,.select:focus-visible,.card:focus-visible,.modal-close:focus-visible,.safety-summary:focus-visible{outline:3px solid rgba(37,99,235,.25);outline-offset:2px}
+    .btn-primary{background:var(--community-ink);color:#fff;box-shadow:0 10px 22px rgba(23,32,42,.18)}
+    .btn-secondary{background:#fff;color:#24313d;border-color:var(--community-line-strong)}
+    .btn-soft{background:#f7fafc;color:#24313d;border-color:var(--community-line)}
+
+    .vitality-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:0;align-self:end}
+    .vitality-item{background:rgba(255,255,255,.84);border:1px solid var(--community-line);border-radius:14px;padding:9px 11px;min-width:0}
+    .vitality-label{font-size:11px;font-weight:800;color:var(--community-muted)}
+    .vitality-value{font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+    .quick-rail{display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding:10px 1px 0}
+    .chip-button{
+      border:1px solid var(--community-line);
+      background:#fff;
+      color:#2f3a45;
+      min-height:40px;
+      border-radius:999px;
+      padding:0 13px;
       display:inline-flex;
       align-items:center;
-      border:1px solid #f2c8d4;
-      background:#fff4f7;
-      color:#9f2f4d;
-      border-radius:999px;
-      padding:7px 11px;
+      gap:7px;
       font-size:13px;
       font-weight:900;
+      white-space:nowrap;
+      transition:background .16s ease,border-color .16s ease,transform .16s ease;
     }
-    .detail-grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
+    .chip-button:hover{transform:translateY(-1px);border-color:#c5d2df}
+    .chip-button.active{background:#17202a;color:#fff;border-color:#17202a}
+
+    .filter-bar{
+      position:sticky;
+      top:73px;
+      z-index:80;
+      margin-top:14px;
+      background:rgba(247,248,250,.88);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(223,230,238,.9);
+      border-radius:18px;
+      box-shadow:0 12px 26px rgba(25,39,52,.08);
+      padding:10px;
     }
-    .detail-item{
-      display:grid;
-      grid-template-columns:86px minmax(0,1fr);
-      gap:8px;
-      font-size:14px;
-      border:1px solid #eee6e2;
-      background:#fff;
-      border-radius:16px;
-      padding:12px;
-    }
-    .detail-item .k{
-      font-weight:900;
-      color:#433744;
-    }
-    .detail-sec{
-      margin-top:16px;
-      border:1px solid #eee6e2;
+    .filter-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center}
+    .filter-rail{display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding:2px}
+    .filter-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .select{height:40px;border:1px solid var(--community-line);background:#fff;border-radius:999px;padding:0 12px;color:#283541;font-weight:800;outline:none}
+    .toggle-chip{position:relative}
+    .toggle-chip input{position:absolute;opacity:0;inset:0}
+    .toggle-chip span{border:1px solid var(--community-line);background:#fff;border-radius:999px;min-height:40px;padding:0 12px;display:inline-flex;align-items:center;font-size:13px;font-weight:900;color:#2f3a45}
+    .toggle-chip input:checked + span{background:#eaf3ff;border-color:#b8d3ff;color:#1953b8}
+
+    .content-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:20px 0 12px}
+    .content-title{font-size:24px;font-weight:900;letter-spacing:0}
+    .result-text{color:var(--community-muted);font-size:14px;margin-top:3px}
+    .active-filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .active-pill{border:1px solid var(--community-line);background:#fff;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;color:#384552}
+
+    .board-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .card{
+      border:1px solid var(--community-line);
       background:#fff;
       border-radius:18px;
-      padding:16px;
-    }
-    .detail-sec h4{
-      font-size:15px;
-      font-weight:900;
-      margin-bottom:8px;
-    }
-    .detail-sec p{
-      font-size:14px;
-      color:#4f4350;
-      white-space:pre-wrap;
-    }
-    .detail-media{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
-      gap:10px;
-      margin-top:12px;
-    }
-    .detail-media img{
-      width:100%;
-      aspect-ratio:1;
-      object-fit:cover;
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:#fff;
-    }
-    .detail-actions{
+      box-shadow:0 10px 24px rgba(25,39,52,.07);
+      overflow:hidden;
+      min-width:0;
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:16px;
+      flex-direction:column;
+      color:inherit;
+      transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
     }
-    .empty-box{
-      padding:22px;
-      border-radius:24px;
-      border:1px dashed #d8ccc7;
-      background:#fffdfa;
-      color:var(--muted);
+    .card:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(25,39,52,.12);border-color:#c8d4df}
+    .card-media{position:relative;aspect-ratio:4/3;background:#eef3f6;overflow:hidden}
+    .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;background:#eef3f6}
+    .placeholder-art{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,#f7fbff 0%,#eef5f0 100%);color:#3d4a56}
+    .placeholder-art::before{content:attr(data-icon);width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:#fff;border:1px solid rgba(205,216,227,.9);box-shadow:0 10px 22px rgba(25,39,52,.08);font-size:30px}
+    .image-count{position:absolute;right:9px;bottom:9px;z-index:3;background:rgba(23,32,42,.78);color:#fff;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900}
+    .card-body{padding:12px;display:flex;flex-direction:column;gap:8px;min-height:178px}
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .category-badge,.price-badge,.trust-badge{display:inline-flex;align-items:center;border-radius:999px;font-size:11px;font-weight:900;line-height:1;padding:6px 8px;max-width:100%;white-space:nowrap}
+    .category-badge{background:#edf7f5;color:#067366}
+    .price-badge{background:#fff5d7;color:#7b5000}
+    .price-badge.free{background:#ebf8ef;color:#17643b}
+    .card-title{font-size:16px;font-weight:900;line-height:1.35;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+    .card-meta{display:flex;flex-wrap:wrap;gap:6px;color:#52606e;font-size:12px;font-weight:800}
+    .card-excerpt{color:#536170;font-size:13px;line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+    .trust-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+    .trust-badge{background:#f2f5f8;color:#536170}
+    .trust-badge.urgent{background:#fff0e7;color:#a54912}
+    .trust-badge.japanese{background:#fff1f5;color:#a83252}
+
+    .skeleton{pointer-events:none}
+    .skeleton .card-media,.skeleton-line{background:linear-gradient(90deg,#edf2f7 0%,#f8fafc 46%,#edf2f7 92%);background-size:220% 100%;animation:skeleton 1.15s linear infinite}
+    .skeleton-line{height:14px;border-radius:999px}
+    .skeleton-line.short{width:58%}
+    @keyframes skeleton{to{background-position:-220% 0}}
+
+    .empty-state,.support-panel{
+      border:1px solid var(--community-line);
+      background:#fff;
+      border-radius:18px;
+      box-shadow:0 10px 24px rgba(25,39,52,.06);
+      padding:20px;
     }
-    @media (max-width:1200px){
-      .layout{
-        grid-template-columns:270px minmax(410px,460px) minmax(0,1fr);
-      }
-      .detail-grid{
-        grid-template-columns:1fr;
-      }
-      .detail h3{
-        font-size:26px;
-      }
+    .empty-state{text-align:center;display:none}
+    .empty-state h2{font-size:20px}
+    .empty-state p{color:var(--community-muted);margin:6px auto 14px;max-width:560px}
+    .support-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:14px;margin-top:18px}
+    .onboarding-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .safety-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+    .safety-list li{list-style:none;background:#f7fafc;border:1px solid var(--community-line);border-radius:12px;padding:9px 10px;color:#44515e;font-size:13px;font-weight:700}
+    .safety-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:900;cursor:pointer}
+    .support-panel details{margin-top:8px;border-top:1px solid var(--community-line);padding-top:10px}
+    .support-panel p{color:var(--community-muted)}
+
+    .modal-shell{position:fixed;inset:0;z-index:300;display:none}
+    .modal-shell.open{display:block}
+    .modal-backdrop{position:absolute;inset:0;background:rgba(13,23,32,.48)}
+    .modal-card{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:min(980px, calc(100% - 32px));
+      max-height:min(88vh, 820px);
+      overflow:auto;
+      background:#fff;
+      border:1px solid var(--community-line);
+      border-radius:22px;
+      box-shadow:0 24px 70px rgba(13,23,32,.28);
     }
-    @media (max-width:1060px){
-      .hero-box{
-        grid-template-columns:1fr;
-      }
-      .layout{
-        grid-template-columns:280px minmax(0,1fr);
-      }
-      .detail-wrap{
-        grid-column:1/-1;
-        position:static;
-      }
+    .modal-close{position:sticky;top:12px;float:right;margin:12px 12px 0 0;z-index:2;width:40px;height:40px;border-radius:999px;border:1px solid var(--community-line);background:#fff;font-size:24px;line-height:1;color:#293541}
+    .detail-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:0;clear:both}
+    .detail-gallery{background:#f2f5f8;min-height:100%;padding:14px;display:grid;gap:10px;align-content:start}
+    .detail-main-image{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#e9eff5}
+    .detail-main-image img{width:100%;height:100%;object-fit:cover}
+    .detail-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .detail-thumbs img,.detail-thumb-placeholder{width:100%;aspect-ratio:1;border-radius:12px;object-fit:cover;background:#e9eff5;border:1px solid #dfe6ee}
+    .detail-content{padding:26px 24px 24px;min-width:0}
+    .detail-content h2{font-size:clamp(24px,3.4vw,36px);line-height:1.18;font-weight:900;letter-spacing:0}
+    .detail-meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .detail-body{white-space:pre-wrap;color:#394653;line-height:1.8;margin-top:12px}
+    .detail-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+    .fact{background:#f7fafc;border:1px solid var(--community-line);border-radius:12px;padding:10px}
+    .fact-label{font-size:11px;color:var(--community-muted);font-weight:900}
+    .fact-value{font-weight:900;margin-top:2px;overflow-wrap:anywhere}
+    .detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .related-box{margin-top:16px;border-top:1px solid var(--community-line);padding-top:14px}
+    .related-box h3{font-size:15px;margin-bottom:8px}
+    .related-list{display:grid;gap:8px}
+    .related-link{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--community-line);border-radius:12px;padding:9px 10px;color:#263442;background:#fff;font-size:13px;font-weight:800}
+
+    .mobile-action-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:120;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid var(--community-line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:8px}
+    .mobile-action-bar .btn{flex:1;min-height:44px}
+
+    @media (max-width:1180px){
+      .board-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .hero-grid{grid-template-columns:1fr}
+      .vitality-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
-    @media (max-width:760px){
-      .hero{padding:18px 12px 8px}
-      .hero-box{padding:18px 16px;border-radius:24px;gap:14px}
-      .hero h1{font-size:clamp(28px,9vw,38px)}
-      .hero p{
-        display:-webkit-box;
-        overflow:hidden;
-        -webkit-box-orient:vertical;
-        -webkit-line-clamp:4;
-        line-clamp:4;
-        font-size:14px;
-        line-height:1.65;
-      }
-      .hero-side{padding:12px;border-radius:18px}
-      .quick-list{grid-template-columns:1fr 1fr}
-      .quick{align-items:center;gap:8px;padding:8px}
-      .quick-icon{width:32px;height:32px;flex-basis:32px;font-size:16px}
-      .quick span{display:none}
-      .layout{
-        grid-template-columns:1fr;
-        padding:12px 12px 58px;
-      }
-      .filters{
-        position:static;
-      }
-      .detail-item{
-        grid-template-columns:1fr;
-      }
-      .detail h3{
-        font-size:24px;
-      }
+
+    @media (max-width:860px){
+      .community-shell{width:min(100% - 24px, var(--community-max));padding-top:12px}
+      .community-hero{background:#fff;padding:14px;border-radius:20px}
+      .hero-search{grid-template-columns:1fr 1fr}
+      .hero-search .search-control{grid-column:1/-1}
+      .hero-actions{display:grid;grid-template-columns:1fr 1fr}
+      .vitality-strip{display:flex;overflow-x:auto;scrollbar-width:thin;gap:8px}
+      .vitality-item{min-width:148px;padding:8px 10px}
+      .filter-bar{top:0;border-radius:0;margin-left:-12px;margin-right:-12px;border-left:none;border-right:none}
+      .filter-grid{grid-template-columns:1fr}
+      .filter-controls{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:2px}
+      .content-head{align-items:flex-start;flex-direction:column}
+      .active-filters{justify-content:flex-start}
+      .board-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+      .support-grid{grid-template-columns:1fr}
+      .detail-layout{grid-template-columns:1fr}
+      .modal-card{inset:auto 0 0 0;left:0;top:auto;transform:none;width:100%;max-height:94vh;border-radius:22px 22px 0 0}
+      .mobile-action-bar{display:flex}
+      .page-footer{margin-bottom:74px}
     }
-    @media (max-width:420px){
-      .badge{
-        max-width:100%;
-      }
+
+    @media (max-width:520px){
+      .site-header .header-inner{padding:8px 0;gap:8px}
+      .site-header .brand{gap:8px}
+      .site-header .brand-logo{width:92px;height:48px}
+      .site-header .brand-title{font-size:12px;line-height:1.12}
+      .site-header .brand-sub{display:none}
+      .site-header .header-actions{gap:8px}
+      .site-header .header-search,
+      .site-header .header-language{display:none}
+      .hero-grid{gap:10px}
+      .hero-title{font-size:24px}
+      .hero-desc{font-size:13px;line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+      .hero-search{margin-top:10px;gap:8px}
+      .search-control input{height:46px}
+      .hero-search .btn{min-height:42px;padding:0 10px}
+      .quick-rail{padding-top:8px}
+      .vitality-strip{display:none}
+      .vitality-item{padding:8px}
+      .vitality-value{font-size:13px}
+      .board-grid{grid-template-columns:1fr}
+      .card{border-radius:16px}
+      .card-media{aspect-ratio:16/10}
+      .safety-list,.detail-facts{grid-template-columns:1fr}
+      .detail-content{padding:20px 16px 18px}
+      .detail-gallery{padding:10px}
     }
   </style>
-<script>
-(function () {
-  var segments = location.pathname.split('/').filter(Boolean);
-  if (segments.length && /\.html$/i.test(segments[segments.length - 1])) segments.pop();
-
-  var localeIndex = -1;
-  for (var i = 0; i < segments.length; i++) {
-    if (segments[i] === 'ja' || segments[i] === 'de') { localeIndex = i; break; }
-  }
-
-  var depth = localeIndex >= 0 ? (segments.length - localeIndex) : Math.max(segments.length - 1, 0);
-  var prefix = depth === 0 ? './' : '../'.repeat(depth);
-
-  var css = document.createElement('link');
-  css.rel = 'stylesheet';
-  css.href = prefix + 'assets/css/cookie-consent.css';
-  document.head.appendChild(css);
-
-  var js = document.createElement('script');
-  js.src = prefix + 'assets/js/cookie-consent.js';
-  js.defer = true;
-  document.head.appendChild(js);
-})();
-</script>
-  </head>
+</head>
 <body>
+  <a class="skip-link" href="#communityBoard">掲示板へ移動</a>
+
   <header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="../" aria-label="Nihon Gateway Germany ホーム">
-      <img class="brand-logo" src="../../assets/images/brand/logo_header.png" alt="Nihon Gateway Germany ヘッダーロゴ">
-      <span class="brand-copy">
-        <span class="brand-title">NIHON GATEWAY GERMANY</span>
-        <span class="brand-sub">ドイツと日本をつなぐ総合ポータル</span>
-      </span>
-    </a>
+    <div class="container header-inner">
+      <a class="brand" href="../" aria-label="Nihon Gateway Germany ホーム">
+        <img class="brand-logo" src="../../assets/images/brand/logo_header.png" alt="Nihon Gateway Germany ヘッダーロゴ" />
+        <span class="brand-copy">
+          <span class="brand-title">NIHON GATEWAY GERMANY</span>
+          <span class="brand-sub">ドイツと日本をつなぐ総合ポータル</span>
+        </span>
+      </a>
 
-    <div class="header-actions">
-      <nav class="header-nav" aria-label="メインナビゲーション">
-        <a href="../" class="active">ホーム</a>
-        <a href="../about/">このサイトについて</a>
-      </nav>
+      <div class="header-actions">
+        <nav class="header-nav" aria-label="メインナビゲーション">
+          <a href="../">ホーム</a>
+          <a href="../about/">このサイトについて</a>
+        </nav>
 
-      <div class="header-category header-category-menu" aria-label="カテゴリ選択">
-        <button type="button" class="header-category-trigger">カテゴリ</button>
-        <div class="category-dropdown">
-          <a href="../guides/">手続き・制度</a>
-          <a href="../living/">住まい・生活</a>
-          <a href="../jobs/" data-base="jobs">仕事・求人</a>
-          <a href="../medical/" data-base="medical">医療・緊急</a>
-          <a href="../eat/" data-base="eat">グルメ・飲食</a>
-          <a href="../shopping/" data-base="shopping">買い物・サービス</a>
-          <a href="../community/" data-base="community">交流・掲示板</a>
-          <a href="../events/" data-base="events">おでかけ・イベント</a>
-          <a href="../learn-german/">ドイツ語・学び</a>
-          <a href="../news/">ニュース・読みもの</a>
-        </div>
-      </div>
-
-      <form class="header-search" action="../search/" method="get" role="search">
-        <label class="search-box" aria-label="サイト内検索">
-          <span>⌕</span>
-          <input type="search" name="q" placeholder="検索">
-        </label>
-        <button class="search-btn" type="submit" aria-label="検索">⌕</button>
-      </form>
-
-      <label class="header-language" aria-label="言語切り替え">
-        <span>Language</span>
-        <select id="languageSelect">
-          <option value="../">日本語</option>
-          <option value="../../">English</option>
-          <option value="../../de/">Deutsch</option>
-          <option value="../../zh/">中文</option>
-          <option value="../../ko/">한국어</option>
-          <option value="../../es/">Espanol</option>
-        </select>
-      </label>
-    </div>
-  </div>
-</header>
-
-  <section class="hero">
-    <div class="hero-box">
-      <div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Community Board</div>
-        <h1>交流掲示板で<br>つながる・探す・相談する</h1>
-        <p>売ります・買います、住まい・物件、レッスン、イベント、仲間募集、サービス、仕事、質問・相談まで。投稿はフォーム送信後に管理者承認されてから公開されます。連絡先は掲示板に公開されず、サイト経由で安全にやり取りできます。</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="./post/">投稿する</a>
-          <a class="btn btn-secondary" href="#board">投稿を見る</a>
-        </div>
-      </div>
-      <aside class="hero-side">
-        <h2>このページはこんな人におすすめ</h2>
-        <div class="quick-list">
-          <div class="quick"><div class="quick-icon">🛒</div><div><strong>売買の相手を探したい</strong><span>家具・家電・日用品など、近くで取引できる相手を見つけられます。</span></div></div>
-          <div class="quick"><div class="quick-icon">🗣️</div><div><strong>言語パートナーを見つけたい</strong><span>日本語とドイツ語の言語交換や会話練習の相手探しに使えます。</span></div></div>
-          <div class="quick"><div class="quick-icon">🎓</div><div><strong>レッスン仲間を募りたい</strong><span>ピアノ・学習・スポーツなど、個人レッスンや少人数募集に活用できます。</span></div></div>
-          <div class="quick"><div class="quick-icon">👩‍👧</div><div><strong>地域のつながりを広げたい</strong><span>ママ友・お友達・イベント仲間など、生活圏での出会い作りに役立ちます。</span></div></div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <main class="layout" id="board">
-    <aside class="panel filters">
-      <div class="panel-title-row">
-        <h2 class="panel-title">検索フィルター</h2>
-        <button class="reset-btn" id="resetFilters" type="button">リセット</button>
-      </div>
-
-      <div class="field">
-        <label class="label" for="searchInput">キーワード</label>
-        <input id="searchInput" class="input" type="text" placeholder="タイトル・本文・地域・価格" />
-      </div>
-
-      <div class="field">
-        <label class="label" for="filterCategory">カテゴリ</label>
-        <select id="filterCategory" class="select">
-          <option value="">すべて</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label class="label" for="filterRegion">地域</label>
-        <select id="filterRegion" class="select">
-          <option value="">すべて</option>
-        </select>
-      </div>
-
-      <a class="btn btn-secondary filter-action" href="./post/">新しく投稿する</a>
-    </aside>
-
-    <section class="content">
-      <div class="toolbar">
-        <div>
-          <h2 class="results-title">交流・掲示板</h2>
-          <div class="results-sub" id="resultText">投稿を読み込み中...</div>
-        </div>
-
-        <div class="chips" id="chips"></div>
-      </div>
-
-      <div id="cards" class="cards" aria-live="polite"></div>
-      <div id="emptyBox" class="empty-box" style="display:none;">現在、条件に一致する投稿はありません。</div>
-    </section>
-
-    <aside class="detail-wrap">
-      <div class="panel detail" id="detailPanel">
-        <h3>投稿を読み込み中...</h3>
-        <p class="sub">掲示板データを取得しています。</p>
-      </div>
-    </aside>
-  </main>
-
-  <footer class="page-footer">
-      <div class="footer-inner">
-        <div class="footer-left">
-<img class="footer-logo" src="../../assets/images/brand/logo_footer.png" alt="Nihon Gateway Germany フッターロゴ">
-          <div class="footer-copy">
-            <div class="footer-title">NIHON GATEWAY GERMANY</div>
-            <div class="footer-sub">ドイツと日本をつなぐ総合ポータル</div>
-            <div class="footer-meta">© 2026 Nihon Gateway Germany</div>
+        <div class="header-category header-category-menu" aria-label="カテゴリ選択">
+          <button type="button" class="header-category-trigger">カテゴリ</button>
+          <div class="category-dropdown">
+            <a href="../guides/">手続き・制度</a>
+            <a href="../living/">住まい・生活</a>
+            <a href="../jobs/" data-base="jobs">仕事・求人</a>
+            <a href="../medical/" data-base="medical">医療・緊急</a>
+            <a href="../eat/" data-base="eat">グルメ・飲食</a>
+            <a href="../shopping/" data-base="shopping">買い物・サービス</a>
+            <a href="../community/" data-base="community">交流・掲示板</a>
+            <a href="../events/" data-base="events">おでかけ・イベント</a>
+            <a href="../learn-german/">ドイツ語の学び</a>
+            <a href="../news/">ニュース・読みもの</a>
           </div>
         </div>
 
-        <div class="footer-links">
-          <a href="../about/">このサイトについて</a>
-          <a href="../contact/">お問い合わせ</a>
-          <a href="../terms/">利用規約</a>
-          <a href="../privacy/">プライバシー</a>
-          <a href="../impressum/">運営者情報</a>
+        <form class="header-search" action="../search/" method="get" role="search">
+          <label class="search-box" aria-label="サイト内検索">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" name="q" placeholder="検索" />
+          </label>
+          <button class="search-btn" type="submit" aria-label="検索">⌕</button>
+        </form>
+
+        <label class="header-language" aria-label="言語を切り替え">
+          <span>Language</span>
+          <select id="languageSelect">
+            <option value="../">日本語</option>
+            <option value="../../">English</option>
+            <option value="../../de/">Deutsch</option>
+            <option value="../../zh/">中文</option>
+            <option value="../../ko/">한국어</option>
+            <option value="../../es/">Espanol</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main class="community-shell">
+    <section class="community-hero" aria-labelledby="communityTitle">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker">Japanese life infrastructure in Germany</div>
+          <h1 id="communityTitle" class="hero-title">ドイツ生活の探す・譲る・つながるを最短で。</h1>
+          <p class="hero-desc">家具、部屋、無料譲渡、イベント、質問、アルバイトまで。日本語で安心して見つけられる、実用第一のコミュニティマーケットです。</p>
+          <div class="hero-search" role="search">
+            <label class="search-control" for="communitySearch">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <input id="communitySearch" type="search" autocomplete="off" placeholder="家具、Berlin、部屋、無料、ビザ相談などで検索" />
+            </label>
+            <a class="btn btn-primary" href="./post/">投稿する</a>
+            <a class="btn btn-secondary" href="#communityBoard" id="latestLink">最新を見る</a>
+          </div>
+          <div class="quick-rail" aria-label="カテゴリショートカット" id="heroChips"></div>
+        </div>
+
+        <div class="vitality-strip" aria-label="コミュニティ状況">
+          <div class="vitality-item"><div class="vitality-label">本日</div><div class="vitality-value" id="todayCount">確認中</div></div>
+          <div class="vitality-item"><div class="vitality-label">人気</div><div class="vitality-value" id="popularCategory">家具・部屋</div></div>
+          <div class="vitality-item"><div class="vitality-label">注目地域</div><div class="vitality-value" id="popularArea">Berlin / NRW</div></div>
+          <div class="vitality-item"><div class="vitality-label">安心</div><div class="vitality-value">日本語OK優先</div></div>
         </div>
       </div>
-    </footer>
+    </section>
+
+    <section class="filter-bar" aria-label="検索と絞り込み">
+      <div class="filter-grid">
+        <div class="filter-rail" id="filterRail" aria-label="カテゴリフィルター"></div>
+        <div class="filter-controls">
+          <select class="select" id="areaFilter" aria-label="地域で絞り込み">
+            <option value="">地域</option>
+          </select>
+          <select class="select" id="sortSelect" aria-label="並び替え">
+            <option value="recommended">おすすめ</option>
+            <option value="newest">新着</option>
+            <option value="urgent">急募</option>
+            <option value="free">無料</option>
+            <option value="popular">人気</option>
+          </select>
+          <label class="toggle-chip"><input type="checkbox" id="freeOnly" /><span>無料</span></label>
+          <label class="toggle-chip"><input type="checkbox" id="urgentOnly" /><span>急募</span></label>
+          <label class="toggle-chip"><input type="checkbox" id="photoOnly" /><span>写真あり</span></label>
+          <button class="chip-button" type="button" id="clearFilters">リセット</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="communityBoard" aria-labelledby="boardTitle">
+      <div class="content-head">
+        <div>
+          <h2 id="boardTitle" class="content-title">コミュニティ投稿</h2>
+          <p class="result-text" id="resultText">投稿を読み込んでいます。</p>
+        </div>
+        <div class="active-filters" id="activeFilters" aria-label="適用中の条件"></div>
+      </div>
+
+      <div class="board-grid" id="cards" aria-live="polite"></div>
+
+      <div class="empty-state" id="emptyState">
+        <h2>条件に合う投稿が見つかりません</h2>
+        <p>キーワードや地域を少し広げると見つかりやすくなります。探しているものがない場合は、コミュニティに投稿してみてください。</p>
+        <div class="hero-actions" style="justify-content:center">
+          <button class="btn btn-secondary" type="button" id="emptyClear">条件をクリア</button>
+          <a class="btn btn-primary" href="./post/">投稿する</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="support-grid" aria-label="安心して使うための情報">
+      <div class="support-panel">
+        <h2 class="content-title">こんな人にすぐ役立ちます</h2>
+        <p>大きな説明より、今の目的に近い入口を並べました。</p>
+        <div class="onboarding-chips">
+          <button class="chip-button" type="button" data-query="留学生">留学生歓迎</button>
+          <button class="chip-button" type="button" data-query="ワーホリ">ワーホリ</button>
+          <button class="chip-button" type="button" data-query="初めて">初めてのドイツ</button>
+          <button class="chip-button" type="button" data-category="家具">家具探し</button>
+          <button class="chip-button" type="button" data-category="部屋">部屋探し</button>
+          <button class="chip-button" type="button" data-query="日本語OK">日本語で相談</button>
+        </div>
+      </div>
+
+      <div class="support-panel">
+        <h2 class="content-title">安心の目安</h2>
+        <ul class="safety-list">
+          <li>個人情報は必要最小限に</li>
+          <li>受け渡しは公共の場所推奨</li>
+          <li>不審投稿は通報</li>
+          <li>金銭取引は自己責任で確認</li>
+        </ul>
+        <details>
+          <summary class="safety-summary">利用上の注意 <span>開く</span></summary>
+          <p>投稿内容や取引の成立をサイトが保証するものではありません。連絡先、住所、口座情報などの扱いに注意し、条件や受け渡し方法を相手と十分に確認してください。</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-shell" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-card" tabindex="-1">
+      <button class="modal-close" type="button" aria-label="詳細を閉じる" data-close-modal>×</button>
+      <div id="detailContent"></div>
+    </article>
+  </div>
+
+  <div class="mobile-action-bar" aria-label="主要アクション">
+    <a class="btn btn-primary" href="./post/">投稿する</a>
+    <a class="btn btn-secondary" href="#communityBoard">探す</a>
+  </div>
+
+  <footer class="page-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img class="footer-logo" src="../../assets/images/brand/logo_footer.png" alt="Nihon Gateway Germany フッターロゴ" />
+        <div class="footer-copy">
+          <div class="footer-title">NIHON GATEWAY GERMANY</div>
+          <div class="footer-sub">ドイツと日本をつなぐ総合ポータル</div>
+          <div class="footer-meta">© 2026 Nihon Gateway Germany</div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="../about/">このサイトについて</a>
+        <a href="../contact/">お問い合わせ</a>
+        <a href="../terms/">利用規約</a>
+        <a href="../privacy/">プライバシー</a>
+        <a href="../impressum/">運営者情報</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbwvGmCKVjbWak1xmqU3li33sS_eSx-g5eZU9NUPUYA_9YD7E2NmwUHe9a0SrG6YFBZt/exec';
-    const BOARD_NOTICE = '一覧は誰でも閲覧できます。投稿する場合は専用フォームから送信し、投稿は一度保留となった後、管理者承認後に掲示板へ公開されます。連絡先は掲示板上に直接表示されず、閲覧者は「この投稿者に連絡する」ボタンから連絡できます。やり取り時は個人情報（氏名・住所・電話番号・口座情報など）の取り扱いに十分注意し、詐欺やなりすまし、不審な送金依頼には応じないでください。取引や連絡はご自身の判断と責任で行ってください。';
-    let posts = [];
-    let selectedId = null;
-
-    const els = {
-      cards: document.getElementById('cards'),
-      detailPanel: document.getElementById('detailPanel'),
-      emptyBox: document.getElementById('emptyBox'),
-      chips: document.getElementById('chips'),
-      resultText: document.getElementById('resultText'),
-      searchInput: document.getElementById('searchInput'),
-      filterCategory: document.getElementById('filterCategory'),
-      filterRegion: document.getElementById('filterRegion'),
-      resetFilters: document.getElementById('resetFilters')
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbwvGmCKVjbWak1xmqU3li33sS_eSx-g5eZU9NUPUYA_9YD7E2NmwUHe9a0SrG6YFBZt/exec";
+    const CATEGORIES = ["すべて", "家具", "部屋", "売ります", "譲ります", "イベント", "質問", "アルバイト", "日本語OK"];
+    const CATEGORY_ICONS = {
+      "家具": "椅",
+      "部屋": "室",
+      "売ります": "売",
+      "譲ります": "譲",
+      "イベント": "会",
+      "質問": "問",
+      "アルバイト": "働",
+      "日本語OK": "日",
+      "その他": "街"
     };
 
-    function escapeHtml(str) {
-      return String(str ?? '')
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#39;');
+    const state = {
+      posts: [],
+      filtered: [],
+      query: "",
+      category: "すべて",
+      area: "",
+      sort: "recommended",
+      freeOnly: false,
+      urgentOnly: false,
+      photoOnly: false,
+      loading: true
+    };
+
+    const els = {
+      search: document.getElementById("communitySearch"),
+      heroChips: document.getElementById("heroChips"),
+      filterRail: document.getElementById("filterRail"),
+      areaFilter: document.getElementById("areaFilter"),
+      sortSelect: document.getElementById("sortSelect"),
+      freeOnly: document.getElementById("freeOnly"),
+      urgentOnly: document.getElementById("urgentOnly"),
+      photoOnly: document.getElementById("photoOnly"),
+      clearFilters: document.getElementById("clearFilters"),
+      cards: document.getElementById("cards"),
+      resultText: document.getElementById("resultText"),
+      activeFilters: document.getElementById("activeFilters"),
+      emptyState: document.getElementById("emptyState"),
+      emptyClear: document.getElementById("emptyClear"),
+      todayCount: document.getElementById("todayCount"),
+      popularCategory: document.getElementById("popularCategory"),
+      popularArea: document.getElementById("popularArea"),
+      modal: document.getElementById("detailModal"),
+      detailContent: document.getElementById("detailContent")
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
-    function normalize(str) {
-      return String(str ?? '').trim().toLowerCase();
+    function normalize(value) {
+      return String(value ?? "").trim().toLowerCase();
     }
 
-    function badgeClass(category) {
-      if (category === '売ります・買います') return 'b-teal';
-      if (category === '住まい・物件') return 'b-blue';
-      if (category === 'イベント・交流') return 'b-pink';
-      return 'b-orange';
+    function field(post, names) {
+      for (const name of names) {
+        if (post && post[name] !== undefined && post[name] !== null && String(post[name]).trim() !== "") return post[name];
+      }
+      return "";
     }
 
-    function formatDate(iso) {
-      const d = new Date(iso);
-      if (Number.isNaN(d.getTime())) return '';
-      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    function splitMediaValue(value) {
+      if (!value) return [];
+      if (Array.isArray(value)) return value.flatMap(splitMediaValue);
+      if (typeof value === "object") return Object.values(value).flatMap(splitMediaValue);
+      return String(value).split(/[\n,]/).map((item) => item.trim()).filter(Boolean);
+    }
+
+    function normalizeImageSrc(src) {
+      const value = String(src || "").trim();
+      if (!value) return "";
+      try {
+        const url = new URL(value, location.href);
+        if (url.hostname.includes("drive.google.com")) {
+          const fileMatch = url.pathname.match(/\/file\/d\/([^/]+)/);
+          const id = fileMatch?.[1] || url.searchParams.get("id");
+          if (id) return `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1200`;
+        }
+        return url.href;
+      } catch {
+        return value;
+      }
+    }
+
+    function getImages(post) {
+      const values = [
+        field(post, ["image", "imageUrl", "image_url", "photo", "photoUrl", "thumbnail"]),
+        post.photos,
+        post.images,
+        post.image_url_1,
+        post.image_url_2,
+        post.image_url_3,
+        post.image1,
+        post.image2,
+        post.image3
+      ];
+      return [...new Set(values.flatMap(splitMediaValue).map(normalizeImageSrc).filter((src) => /^https?:\/\//i.test(src) || src.startsWith("/") || src.startsWith("../../") || src.startsWith("./")))];
     }
 
     function dateValue(value) {
-      const d = new Date(value);
-      return Number.isNaN(d.getTime()) ? 0 : d.getTime();
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? 0 : date.getTime();
     }
 
-    async function fetchJson(url, options = {}) {
-      const res = await fetch(url, options);
-      if (!res.ok) throw new Error('Network error');
-      return await res.json();
-    }
-
-    function getLocation(post) {
-      return [post.city, post.region].filter(Boolean).join(' / ') || '未設定';
+    function formatDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "日付未設定";
+      return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
     }
 
     function getPostId(post, index) {
-      return String(post.post_id || post.id || `community-${index + 1}`);
+      return String(field(post, ["post_id", "postId", "id", "_id"]) || `community-${index + 1}`);
     }
 
-    function uniqueRegions() {
-      return [...new Set(posts.flatMap((p) => [p.region, p.city]).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ja'));
+    function getLocation(post) {
+      return [field(post, ["city", "town"]), field(post, ["region", "state", "area"])].filter(Boolean).join(" / ") || "地域未設定";
     }
 
-    function uniqueCategories() {
-      return [...new Set(posts.map((p) => p.category1).filter(Boolean))];
+    function getPrice(post) {
+      return String(field(post, ["price", "amount", "fee"]) || "").trim();
     }
 
-    function renderFilters() {
-      const categories = uniqueCategories();
-      const regions = uniqueRegions();
-      const currentCategory = els.filterCategory.value;
-      const currentRegion = els.filterRegion.value;
-
-      els.filterCategory.innerHTML = '<option value="">すべて</option>' + categories.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
-      els.filterRegion.innerHTML = '<option value="">すべて</option>' + regions.map((r) => `<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('');
-
-      if (categories.includes(currentCategory)) els.filterCategory.value = currentCategory;
-      if (regions.includes(currentRegion)) els.filterRegion.value = currentRegion;
+    function isFree(post) {
+      const price = normalize(getPrice(post));
+      const text = normalize([post.title, post.body, post.category1, post.category2].join(" "));
+      return !price && text.includes("譲") || ["0", "0円", "0 eur", "0€", "free", "無料"].some((word) => price.includes(word)) || text.includes("無料");
     }
 
-    function filteredPosts() {
-      const q = normalize(els.searchInput.value);
-      const category = els.filterCategory.value;
-      const region = els.filterRegion.value;
-
-      return [...posts]
-        .sort((a, b) => dateValue(b.created_at) - dateValue(a.created_at))
-        .filter((post) => {
-          const searchable = normalize([post.title, post.category1, post.category2, post.region, post.city, post.nickname, post.body, post.price].join(' '));
-
-          const matchesQuery = !q || searchable.includes(q);
-          const matchesCategory = !category || post.category1 === category;
-          const matchesRegion = !region || post.region === region || post.city === region;
-          return matchesQuery && matchesCategory && matchesRegion;
-        });
+    function isUrgent(post) {
+      return normalize([post.title, post.body, post.category1, post.category2, post.tags].join(" ")).match(/急募|急ぎ|至急|urgent|asap/) !== null;
     }
 
-    function renderSummary(list) {
-      els.resultText.textContent = `全 ${posts.length} 件中 ${list.length} 件を表示`;
+    function isJapaneseOk(post) {
+      return normalize([post.title, post.body, post.category1, post.category2, post.preferred_contact_method, post.tags].join(" ")).match(/日本語|japanese|日本人/) !== null;
     }
 
-    function renderChips() {
-      const chips = [];
-      const keyword = els.searchInput.value.trim();
-
-      if (keyword) chips.push(`キーワード: ${escapeHtml(keyword)}`);
-      if (els.filterCategory.value) chips.push(`カテゴリ: ${escapeHtml(els.filterCategory.value)}`);
-      if (els.filterRegion.value) chips.push(`地域: ${escapeHtml(els.filterRegion.value)}`);
-
-      els.chips.innerHTML = chips.map((chip) => `<span class="chip">${chip}</span>`).join('');
+    function inferCategory(post) {
+      const text = normalize([post.category1, post.category2, post.title, post.body].join(" "));
+      if (text.includes("家具") || text.includes("家電") || text.includes("ソファ") || text.includes("ベッド")) return "家具";
+      if (text.includes("部屋") || text.includes("住まい") || text.includes("wg") || text.includes("家探し") || text.includes("物件")) return "部屋";
+      if (text.includes("譲") || text.includes("無料") || text.includes("差し上げ")) return "譲ります";
+      if (text.includes("売") || text.includes("買")) return "売ります";
+      if (text.includes("イベント") || text.includes("交流会") || text.includes("会")) return "イベント";
+      if (text.includes("質問") || text.includes("相談") || text.includes("教えて")) return "質問";
+      if (text.includes("アルバイト") || text.includes("求人") || text.includes("仕事") || text.includes("バイト")) return "アルバイト";
+      if (text.includes("日本語")) return "日本語OK";
+      return field(post, ["category1"]) || "その他";
     }
 
-    function syncSelected(list) {
-      if (!list.some((post) => String(post._id) === String(selectedId))) {
-        selectedId = list[0]?._id || null;
-      }
+    function normalizePost(post, index) {
+      const images = getImages(post);
+      const category = inferCategory(post);
+      return {
+        ...post,
+        _id: getPostId(post, index),
+        _title: field(post, ["title", "name", "subject"]) || "タイトル未設定",
+        _body: field(post, ["body", "description", "message", "content"]) || "",
+        _category: category,
+        _categoryRaw: [post.category1, post.category2].filter(Boolean).join(" / "),
+        _location: getLocation(post),
+        _date: field(post, ["created_at", "createdAt", "date", "timestamp", "updated_at"]),
+        _price: getPrice(post),
+        _images: images,
+        _free: isFree(post),
+        _urgent: isUrgent(post),
+        _japaneseOk: isJapaneseOk(post)
+      };
     }
 
-    function renderCards(list) {
-      if (!list.length) {
-        els.cards.innerHTML = '';
-        els.emptyBox.style.display = 'block';
-        return;
-      }
+    function renderRails() {
+      const chipHtml = CATEGORIES.map((category) => (
+        `<button class="chip-button ${state.category === category ? "active" : ""}" type="button" data-category="${escapeHtml(category)}">${escapeHtml(category)}</button>`
+      )).join("");
+      els.heroChips.innerHTML = chipHtml;
+      els.filterRail.innerHTML = chipHtml;
 
-      els.emptyBox.style.display = 'none';
-
-      els.cards.innerHTML = list.map((post) => {
-        const title = post.title || 'タイトル未設定';
-        const category = post.category1 || 'カテゴリ未設定';
-        const location = getLocation(post);
-        const price = post.price || '';
-        const summary = post.body || '本文は未設定です。';
-        const priceRow = price
-          ? `
-              <div class="meta-row">
-                <dt>価格</dt>
-                <dd>${escapeHtml(price)}</dd>
-              </div>
-            `
-          : '';
-
-        return `
-          <article class="card ${String(post._id) === String(selectedId) ? 'active' : ''}" data-id="${escapeHtml(post._id)}" role="button" tabindex="0" aria-pressed="${String(post._id) === String(selectedId) ? 'true' : 'false'}">
-            <div class="card-head">
-              <div>
-                <h3 class="company">${escapeHtml(title)}</h3>
-                <p class="position">${escapeHtml(location)}</p>
-              </div>
-              <span class="badge ${badgeClass(category)}">${escapeHtml(category)}</span>
-            </div>
-
-            <dl class="meta">
-              ${priceRow}
-
-              <div class="meta-row">
-                <dt>内容</dt>
-                <dd class="summary">${escapeHtml(summary)}</dd>
-              </div>
-            </dl>
-          </article>
-        `;
-      }).join('');
-
-      els.cards.querySelectorAll('.card').forEach((card) => {
-        const selectCard = () => {
-          selectedId = card.dataset.id;
-          renderBoard();
-        };
-
-        card.addEventListener('click', selectCard);
-        card.addEventListener('keydown', (event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            selectCard();
-          }
+      document.querySelectorAll("[data-category]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.category = button.dataset.category || "すべて";
+          applyFilters();
         });
       });
     }
 
-    function renderDetail(list) {
-      const post = list.find((item) => String(item._id) === String(selectedId));
+    function renderAreas() {
+      const areas = [...new Set(state.posts.flatMap((post) => [post.city, post.region, post.area, post._location]).filter(Boolean))]
+        .sort((a, b) => String(a).localeCompare(String(b), "ja"));
+      els.areaFilter.innerHTML = `<option value="">地域</option>${areas.map((area) => `<option value="${escapeHtml(area)}">${escapeHtml(area)}</option>`).join("")}`;
+      els.areaFilter.value = state.area;
+    }
 
-      if (!post) {
-        els.detailPanel.innerHTML = `
-          <h3>投稿を選択してください</h3>
-          <p class="sub">条件に一致する投稿がない場合は、検索条件を変更してください。</p>
-          <section class="detail-sec">
-            <h4>利用上の注意</h4>
-            <p>${escapeHtml(BOARD_NOTICE)}</p>
-          </section>
-        `;
+    function renderSkeletons() {
+      els.emptyState.style.display = "none";
+      els.cards.innerHTML = Array.from({ length: 8 }).map(() => `
+        <article class="card skeleton" aria-hidden="true">
+          <div class="card-media"></div>
+          <div class="card-body">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function scorePost(post) {
+      let score = 0;
+      if (post._images.length) score += 8;
+      if (post._free) score += 5;
+      if (post._urgent) score += 4;
+      if (post._japaneseOk) score += 3;
+      score += Math.min(8, dateValue(post._date) / 1000000000000);
+      return score;
+    }
+
+    function applyFilters() {
+      state.query = els.search.value.trim();
+      state.area = els.areaFilter.value;
+      state.sort = els.sortSelect.value;
+      state.freeOnly = els.freeOnly.checked;
+      state.urgentOnly = els.urgentOnly.checked;
+      state.photoOnly = els.photoOnly.checked;
+
+      const query = normalize(state.query);
+      const list = state.posts.filter((post) => {
+        const searchable = normalize([post._title, post._body, post._category, post._categoryRaw, post._location, post._price, post.nickname].join(" "));
+        const categoryOk = state.category === "すべて" || post._category === state.category || (state.category === "日本語OK" && post._japaneseOk);
+        const areaOk = !state.area || [post.city, post.region, post.area, post._location].filter(Boolean).some((area) => String(area) === state.area);
+        const queryOk = !query || searchable.includes(query);
+        return categoryOk && areaOk && queryOk && (!state.freeOnly || post._free) && (!state.urgentOnly || post._urgent) && (!state.photoOnly || post._images.length);
+      });
+
+      list.sort((a, b) => {
+        if (state.sort === "newest") return dateValue(b._date) - dateValue(a._date);
+        if (state.sort === "urgent") return Number(b._urgent) - Number(a._urgent) || dateValue(b._date) - dateValue(a._date);
+        if (state.sort === "free") return Number(b._free) - Number(a._free) || dateValue(b._date) - dateValue(a._date);
+        if (state.sort === "popular") return scorePost(b) - scorePost(a);
+        return scorePost(b) - scorePost(a);
+      });
+
+      state.filtered = list;
+      renderRails();
+      renderCards();
+      renderSummary();
+      renderActiveFilters();
+      syncHashDetail();
+    }
+
+    function renderCards() {
+      if (!state.filtered.length) {
+        els.cards.innerHTML = "";
+        els.emptyState.style.display = "block";
         return;
       }
 
-      const title = post.title || 'タイトル未設定';
-      const category = post.category1 || 'カテゴリ未設定';
-      const subCategory = post.category2 || '詳細カテゴリ未設定';
-      const location = getLocation(post);
-      const price = post.price || '価格未設定';
-      const body = post.body || '本文は未設定です。';
-      const contactId = post.post_id || post._id || '';
-      const contactHref = contactId ? `./contact/?post_id=${encodeURIComponent(contactId)}` : './contact/';
-      const images = [post.image_url_1, post.image_url_2, post.image_url_3].filter(Boolean);
-
-      els.detailPanel.innerHTML = `
-        <h3>${escapeHtml(title)}</h3>
-        <p class="sub">${escapeHtml(location)}</p>
-
-        <div class="detail-badges">
-          <span class="detail-badge">${escapeHtml(category)}</span>
-          <span class="detail-badge">${escapeHtml(subCategory)}</span>
-        </div>
-
-        <div class="detail-grid">
-          <div class="detail-item">
-            <div class="k">カテゴリ</div>
-            <div>${escapeHtml(category)}</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="k">詳細カテゴリ</div>
-            <div>${escapeHtml(subCategory)}</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="k">地域</div>
-            <div>${escapeHtml(location)}</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="k">価格</div>
-            <div>${escapeHtml(price)}</div>
-          </div>
-        </div>
-
-        <section class="detail-sec">
-          <h4>本文</h4>
-          <p>${escapeHtml(body)}</p>
-        </section>
-
-        ${
-          images.length
-            ? `
-              <section class="detail-sec">
-                <h4>画像</h4>
-                <div class="detail-media">
-                  ${images.map((src, index) => `<img src="${escapeHtml(src)}" alt="${escapeHtml(title)} 画像${index + 1}">`).join('')}
-                </div>
-              </section>
-            `
-            : ''
-        }
-
-        <div class="detail-actions">
-          <a class="btn btn-primary" href="${escapeHtml(contactHref)}">投稿者に連絡する</a>
-          <a class="btn btn-secondary" href="./post/">新しく投稿する</a>
-        </div>
-
-        <section class="detail-sec">
-          <h4>利用上の注意</h4>
-          <p>${escapeHtml(BOARD_NOTICE)}</p>
-        </section>
-      `;
+      els.emptyState.style.display = "none";
+      els.cards.innerHTML = state.filtered.map((post) => {
+        const image = post._images[0];
+        const category = post._category || "その他";
+        const priceText = post._free ? "無料" : (post._price || "価格相談");
+        const contactDate = formatDate(post._date);
+        return `
+          <a class="card" href="#post-${encodeURIComponent(post._id)}" data-post-id="${escapeHtml(post._id)}" aria-label="${escapeHtml(post._title)}の詳細を開く">
+            <div class="card-media">
+              <div class="placeholder-art" data-icon="${escapeHtml(CATEGORY_ICONS[category] || CATEGORY_ICONS["その他"])}"></div>
+              ${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(post._title)}の写真" loading="lazy" decoding="async" onerror="this.remove()">` : ""}
+              ${post._images.length > 1 ? `<span class="image-count">写真 ${post._images.length}</span>` : ""}
+            </div>
+            <div class="card-body">
+              <div class="card-top">
+                <span class="category-badge">${escapeHtml(category)}</span>
+                <span class="price-badge ${post._free ? "free" : ""}">${escapeHtml(priceText)}</span>
+              </div>
+              <h3 class="card-title">${escapeHtml(post._title)}</h3>
+              <div class="card-meta">
+                <span>${escapeHtml(post._location)}</span>
+                <span>${escapeHtml(contactDate)}</span>
+              </div>
+              <p class="card-excerpt">${escapeHtml(post._body || "詳細は投稿ページで確認してください。")}</p>
+              <div class="trust-row">
+                ${post._urgent ? `<span class="trust-badge urgent">急募</span>` : ""}
+                ${post._japaneseOk ? `<span class="trust-badge japanese">日本語OK</span>` : ""}
+                ${post._images.length ? `<span class="trust-badge">写真あり</span>` : ""}
+                <span class="trust-badge">${escapeHtml(post._categoryRaw || "生活")}</span>
+              </div>
+            </div>
+          </a>
+        `;
+      }).join("");
     }
 
-    function renderBoard() {
-      const list = filteredPosts();
-      syncSelected(list);
-      renderSummary(list);
-      renderChips();
-      renderCards(list);
-      renderDetail(list);
+    function renderSummary() {
+      const today = new Date();
+      const todayCount = state.posts.filter((post) => {
+        const date = new Date(post._date);
+        return !Number.isNaN(date.getTime()) && date.toDateString() === today.toDateString();
+      }).length;
+      els.resultText.textContent = `${state.posts.length}件中 ${state.filtered.length}件を表示`;
+      els.todayCount.textContent = `${todayCount}件投稿`;
+
+      const byCategory = countBy(state.posts, "_category");
+      const byArea = countBy(state.posts, "_location");
+      els.popularCategory.textContent = topKey(byCategory) || "家具・部屋";
+      els.popularArea.textContent = topKey(byArea) || "Berlin / NRW";
+    }
+
+    function renderActiveFilters() {
+      const filters = [];
+      if (state.query) filters.push(`検索: ${state.query}`);
+      if (state.category !== "すべて") filters.push(state.category);
+      if (state.area) filters.push(`地域: ${state.area}`);
+      if (state.freeOnly) filters.push("無料");
+      if (state.urgentOnly) filters.push("急募");
+      if (state.photoOnly) filters.push("写真あり");
+      els.activeFilters.innerHTML = filters.map((filter) => `<span class="active-pill">${escapeHtml(filter)}</span>`).join("");
+    }
+
+    function countBy(items, key) {
+      return items.reduce((acc, item) => {
+        const value = item[key];
+        if (value) acc[value] = (acc[value] || 0) + 1;
+        return acc;
+      }, {});
+    }
+
+    function topKey(map) {
+      return Object.entries(map).sort((a, b) => b[1] - a[1])[0]?.[0] || "";
+    }
+
+    function clearFilters() {
+      els.search.value = "";
+      els.areaFilter.value = "";
+      els.sortSelect.value = "recommended";
+      els.freeOnly.checked = false;
+      els.urgentOnly.checked = false;
+      els.photoOnly.checked = false;
+      state.category = "すべて";
+      applyFilters();
+    }
+
+    function postByHash() {
+      const match = decodeURIComponent(location.hash || "").match(/^#post-(.+)$/);
+      if (!match) return null;
+      return state.posts.find((post) => String(post._id) === match[1]) || null;
+    }
+
+    function syncHashDetail() {
+      const post = postByHash();
+      if (post) openDetail(post);
+      else closeDetail(false);
+    }
+
+    function openDetail(post) {
+      const related = state.posts
+        .filter((item) => item._id !== post._id && (item._category === post._category || item._location === post._location))
+        .slice(0, 3);
+      const images = post._images.length ? post._images : [];
+      const mainImage = images[0];
+      const contactHref = post._id ? `./contact/?post_id=${encodeURIComponent(post._id)}` : "./contact/";
+      const reportHref = post._id ? `./report/?post_id=${encodeURIComponent(post._id)}` : "./report/";
+
+      els.detailContent.innerHTML = `
+        <div class="detail-layout">
+          <div class="detail-gallery">
+            <div class="detail-main-image">
+              <div class="placeholder-art" data-icon="${escapeHtml(CATEGORY_ICONS[post._category] || CATEGORY_ICONS["その他"])}"></div>
+              ${mainImage ? `<img src="${escapeHtml(mainImage)}" alt="${escapeHtml(post._title)}の大きな写真" loading="eager" decoding="async" onerror="this.remove()">` : ""}
+            </div>
+            <div class="detail-thumbs">
+              ${images.slice(1, 4).map((src, index) => `<img src="${escapeHtml(src)}" alt="${escapeHtml(post._title)}の写真 ${index + 2}" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'detail-thumb-placeholder'}))">`).join("")}
+              ${!images.length ? `<div class="detail-thumb-placeholder"></div><div class="detail-thumb-placeholder"></div><div class="detail-thumb-placeholder"></div>` : ""}
+            </div>
+          </div>
+          <div class="detail-content">
+            <span class="category-badge">${escapeHtml(post._category)}</span>
+            <h2 id="detailTitle">${escapeHtml(post._title)}</h2>
+            <div class="detail-meta">
+              <span class="price-badge ${post._free ? "free" : ""}">${escapeHtml(post._free ? "無料" : (post._price || "価格相談"))}</span>
+              ${post._urgent ? `<span class="trust-badge urgent">急募</span>` : ""}
+              ${post._japaneseOk ? `<span class="trust-badge japanese">日本語OK</span>` : ""}
+              ${post._images.length ? `<span class="trust-badge">写真あり</span>` : ""}
+            </div>
+            <div class="detail-facts">
+              <div class="fact"><div class="fact-label">地域</div><div class="fact-value">${escapeHtml(post._location)}</div></div>
+              <div class="fact"><div class="fact-label">投稿日</div><div class="fact-value">${escapeHtml(formatDate(post._date))}</div></div>
+              <div class="fact"><div class="fact-label">カテゴリ</div><div class="fact-value">${escapeHtml(post._categoryRaw || post._category)}</div></div>
+              <div class="fact"><div class="fact-label">投稿ID</div><div class="fact-value">${escapeHtml(post._id)}</div></div>
+            </div>
+            <p class="detail-body">${escapeHtml(post._body || "詳細本文は未設定です。")}</p>
+            <div class="detail-actions">
+              <a class="btn btn-primary" href="${escapeHtml(contactHref)}">投稿者に連絡</a>
+              <button class="btn btn-secondary" type="button" id="copyShareUrl">URLをコピー</button>
+              <a class="btn btn-soft" href="${escapeHtml(reportHref)}">通報</a>
+            </div>
+            <div class="related-box">
+              <h3>関連投稿</h3>
+              <div class="related-list">
+                ${related.length ? related.map((item) => `<a class="related-link" href="#post-${encodeURIComponent(item._id)}"><span>${escapeHtml(item._title)}</span><span>${escapeHtml(item._location)}</span></a>`).join("") : `<p class="result-text">近い条件の投稿はまだありません。</p>`}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      els.modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+      document.querySelector(".modal-card").focus();
+      document.getElementById("copyShareUrl")?.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(location.href);
+          document.getElementById("copyShareUrl").textContent = "コピーしました";
+        } catch {
+          document.getElementById("copyShareUrl").textContent = "URLを選択してコピー";
+        }
+      });
+    }
+
+    function closeDetail(updateHash = true) {
+      els.modal.classList.remove("open");
+      document.body.style.overflow = "";
+      if (updateHash && location.hash.startsWith("#post-")) {
+        history.pushState("", document.title, location.pathname + location.search);
+      }
+    }
+
+    async function fetchJson(url) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Network error");
+      return response.json();
     }
 
     async function loadPosts() {
+      renderSkeletons();
       try {
-        const data = await fetchJson(GAS_URL + '?action=getPosts');
-        posts = (data.posts || []).map((post, index) => ({
-          ...post,
-          _id: getPostId(post, index)
-        }));
-        renderFilters();
-        renderBoard();
-      } catch (e) {
-        console.error('掲示板データの読み込みに失敗しました:', e);
-        posts = [];
-        selectedId = null;
-        els.resultText.textContent = '読み込みに失敗しました';
-        els.chips.innerHTML = '';
-        els.cards.innerHTML = '';
-        els.emptyBox.style.display = 'block';
-        els.emptyBox.textContent = '投稿の読み込みに失敗しました。GASの公開設定とURLを確認してください。';
-        els.detailPanel.innerHTML = `
-          <h3>読み込みエラー</h3>
-          <p class="sub">掲示板データを取得できませんでした。</p>
-          <section class="detail-sec">
-            <h4>確認ポイント</h4>
-            <p>GASの公開設定とURLを確認してください。</p>
-          </section>
-        `;
+        const data = await fetchJson(`${GAS_URL}?action=getPosts`);
+        state.posts = (data.posts || []).map(normalizePost);
+        state.loading = false;
+        renderAreas();
+        applyFilters();
+      } catch (error) {
+        console.error("コミュニティ投稿を読み込めませんでした:", error);
+        state.posts = [];
+        state.filtered = [];
+        state.loading = false;
+        els.cards.innerHTML = "";
+        els.resultText.textContent = "投稿を読み込めませんでした。時間をおいて再度お試しください。";
+        els.todayCount.textContent = "取得不可";
+        els.emptyState.style.display = "block";
+        els.emptyState.querySelector("h2").textContent = "投稿を読み込めませんでした";
+        els.emptyState.querySelector("p").textContent = "掲示板データの取得に失敗しました。投稿フォームは利用できます。";
       }
     }
 
-    [els.searchInput, els.filterCategory, els.filterRegion].forEach((el) => {
-      el.addEventListener('input', renderBoard);
-      el.addEventListener('change', renderBoard);
+    els.search.addEventListener("input", applyFilters);
+    els.areaFilter.addEventListener("change", applyFilters);
+    els.sortSelect.addEventListener("change", applyFilters);
+    els.freeOnly.addEventListener("change", applyFilters);
+    els.urgentOnly.addEventListener("change", applyFilters);
+    els.photoOnly.addEventListener("change", applyFilters);
+    els.clearFilters.addEventListener("click", clearFilters);
+    els.emptyClear.addEventListener("click", clearFilters);
+    document.querySelectorAll("[data-query]").forEach((button) => {
+      button.addEventListener("click", () => {
+        els.search.value = button.dataset.query || "";
+        applyFilters();
+        document.getElementById("communityBoard").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+    document.querySelectorAll("[data-close-modal]").forEach((item) => item.addEventListener("click", () => closeDetail(true)));
+    window.addEventListener("hashchange", syncHashDetail);
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && els.modal.classList.contains("open")) closeDetail(true);
     });
 
-    els.resetFilters.addEventListener('click', () => {
-      els.searchInput.value = '';
-      els.filterCategory.value = '';
-      els.filterRegion.value = '';
-      selectedId = null;
-      renderBoard();
-    });
-
-    const languageSelect = document.getElementById('languageSelect');
+    const languageSelect = document.getElementById("languageSelect");
     if (languageSelect) {
-      languageSelect.addEventListener('change', (event) => {
-        const target = event.target.value;
-        if (target) window.location.href = target;
+      languageSelect.addEventListener("change", (event) => {
+        if (event.target.value) window.location.href = event.target.value;
       });
     }
 
+    renderRails();
     loadPosts();
   </script>
-<script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/cookie-consent.js" defer></script>
+  <script src="../../assets/js/main.js"></script>
 </body>
 </html>
