@@ -213,7 +213,9 @@
     .skeleton{pointer-events:none}
     .skeleton .card-media,.skeleton-line{background:linear-gradient(90deg,#edf2f7 0%,#f8fafc 46%,#edf2f7 92%);background-size:220% 100%;animation:skeleton 1.15s linear infinite}
     .skeleton-line{height:14px;border-radius:999px}
+    .skeleton-line.tiny{width:26%;height:22px}
     .skeleton-line.short{width:58%}
+    .skeleton-line.long{width:86%}
     @keyframes skeleton{to{background-position:-220% 0}}
 
     .empty-state,.support-panel{
@@ -501,7 +503,7 @@
         <div class="board-grid" id="cards" aria-live="polite"></div>
 
         <div class="empty-state" id="emptyState">
-          <h2>条件に合う投稿が見つかりません</h2>
+          <h2>条件に合う投稿が見つかりませんでした</h2>
           <p>キーワードや地域を少し広げると見つかりやすくなります。探しているものがない場合は、コミュニティに投稿してみてください。</p>
           <div class="hero-actions" style="justify-content:center">
             <button class="btn btn-secondary" type="button" id="emptyClear">条件をクリア</button>
@@ -920,12 +922,18 @@
 
     function renderSkeletons() {
       els.emptyState.style.display = "none";
-      els.cards.innerHTML = Array.from({ length: 8 }).map(() => `
+      els.activeFilters.innerHTML = "";
+      els.searchSuggestions.innerHTML = "";
+      els.cards.innerHTML = Array.from({ length: 5 }).map(() => `
         <article class="card skeleton" aria-hidden="true">
           <div class="card-media"></div>
           <div class="card-body">
+            <div class="card-top">
+              <div class="skeleton-line tiny"></div>
+              <div class="skeleton-line tiny"></div>
+            </div>
+            <div class="skeleton-line long"></div>
             <div class="skeleton-line short"></div>
-            <div class="skeleton-line"></div>
             <div class="skeleton-line"></div>
             <div class="skeleton-line short"></div>
           </div>
@@ -1052,10 +1060,10 @@
 
       const byCategory = countBy(state.posts, "_postType");
       const byArea = countBy(state.posts, "_location");
-      state.popularCategory = topKey(byCategory) || "譲ります";
+      state.popularCategory = topKey(byCategory) || "";
       state.popularArea = topKey(byArea) || "";
-      els.popularCategory.textContent = state.popularCategory;
-      els.popularArea.textContent = state.popularArea || "地域を選ぶ";
+      els.popularCategory.textContent = state.popularCategory || "投稿タイプを選択";
+      els.popularArea.textContent = state.popularArea || "地域を選択";
       persistSaved();
       renderSearchSuggestions();
       renderHeroInsight();
@@ -1063,7 +1071,18 @@
 
     function renderHeroInsight() {
       const spotlight = [...state.posts].sort((a, b) => scorePost(b) - scorePost(a))[0];
-      if (!spotlight) return;
+      if (!spotlight) {
+        state.spotlightId = "";
+        els.heroInsightTitle.classList.remove("loading-lines");
+        els.heroInsightMeta.classList.remove("loading-lines");
+        els.heroInsightTitle.textContent = "注目投稿はまだありません";
+        els.heroInsightMeta.textContent = "投稿が届くとここに表示されます";
+        els.heroInsightLink.removeAttribute("target");
+        els.heroInsightLink.removeAttribute("rel");
+        els.heroInsightLink.href = "#communityBoard";
+        els.heroAreaButton.textContent = "条件を見直す";
+        return;
+      }
       state.spotlightId = spotlight._id;
       els.heroInsightTitle.classList.remove("loading-lines");
       els.heroInsightMeta.classList.remove("loading-lines");
@@ -1076,6 +1095,10 @@
     }
 
     function renderSearchSuggestions() {
+      if (!state.posts.length) {
+        els.searchSuggestions.innerHTML = "";
+        return;
+      }
       const postType = topKey(countBy(state.posts, "_postType")) || "売ります";
       const subcategory = topKey(countBy(state.posts, "_subcategory")) || "家具";
       const area = topKey(countBy(state.posts, "_location")) || "Berlin";
@@ -1272,17 +1295,21 @@
         renderAreas();
         applyFilters();
       } catch (error) {
-        console.error("コミュニティ投稿を読み込めませんでした:", error);
+        console.error("コミュニティ投稿を取得できませんでした:", error);
         state.posts = [];
         state.filtered = [];
         state.loading = false;
         els.cards.innerHTML = "";
         els.resultText.classList.remove("loading-lines");
-        els.resultText.textContent = "投稿を読み込めませんでした。時間をおいて再度お試しください。";
-        els.todayCount.textContent = "取得不可";
+        els.resultText.textContent = "現在、投稿を表示できません";
+        els.todayCount.textContent = "未取得";
+        els.popularCategory.textContent = "未取得";
+        els.popularArea.textContent = "未取得";
+        els.searchSuggestions.innerHTML = "";
+        renderHeroInsight();
         els.emptyState.style.display = "block";
-        els.emptyState.querySelector("h2").textContent = "投稿を読み込めませんでした";
-        els.emptyState.querySelector("p").textContent = "掲示板データの取得に失敗しました。投稿フォームは利用できます。";
+        els.emptyState.querySelector("h2").textContent = "現在、投稿を表示できません";
+        els.emptyState.querySelector("p").textContent = "時間をおいて再度お試しください。投稿フォームは利用できます。";
       }
     }
 
