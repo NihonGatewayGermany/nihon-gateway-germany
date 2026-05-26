@@ -272,6 +272,46 @@
   margin-top:14px;
 }
 
+.skeleton-block,
+.skeleton-line{
+  display:block;
+  border-radius:999px;
+  background:linear-gradient(90deg,#edf2f7 0%,#f8fafc 46%,#edf2f7 92%);
+  background-size:220% 100%;
+  animation:skeleton 1.15s linear infinite;
+}
+
+.skeleton-line{
+  height:14px;
+  margin-top:10px;
+}
+
+.skeleton-line.title{
+  height:28px;
+  width:min(100%,520px);
+  margin-top:0;
+}
+
+.skeleton-line.short{width:42%}
+.skeleton-line.medium{width:68%}
+.skeleton-line.long{width:88%}
+
+.skeleton-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:14px 0;
+}
+
+.skeleton-badge{
+  width:76px;
+  height:28px;
+}
+
+@keyframes skeleton{
+  to{background-position:-220% 0}
+}
+
 .detail-page{
   display:grid;
   gap:18px;
@@ -284,6 +324,21 @@
   border-radius:22px;
   box-shadow:var(--shadow);
   padding:28px;
+}
+
+.detail-loading{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+  gap:18px;
+}
+
+.detail-loading-media{
+  min-height:360px;
+  border-radius:18px;
+}
+
+.detail-loading-content{
+  align-self:start;
 }
 
 .detail-shell{
@@ -520,6 +575,10 @@
 
 .detail-shell{grid-template-columns:1fr}
 
+.detail-loading{grid-template-columns:1fr}
+
+.detail-loading-media{min-height:220px}
+
 .detail-panel{padding:20px}
 
 .safety-list{grid-template-columns:1fr}
@@ -590,7 +649,21 @@
 <main class="main">
   <div class="container">
     <section id="detailMode" class="detail-page" aria-live="polite" hidden>
-      <div class="detail-loading">投稿を読み込んでいます。</div>
+      <div class="detail-loading" aria-hidden="true">
+        <div class="skeleton-block detail-loading-media"></div>
+        <div class="detail-loading-content">
+          <span class="skeleton-line title"></span>
+          <div class="skeleton-badges">
+            <span class="skeleton-block skeleton-badge"></span>
+            <span class="skeleton-block skeleton-badge"></span>
+            <span class="skeleton-block skeleton-badge"></span>
+          </div>
+          <span class="skeleton-line long"></span>
+          <span class="skeleton-line medium"></span>
+          <span class="skeleton-line long"></span>
+          <span class="skeleton-line short"></span>
+        </div>
+      </div>
     </section>
 
     <div id="postFormMode">
@@ -628,7 +701,7 @@
           <div class="form-field">
             <label for="category1">カテゴリ1<span class="required-mark">*</span></label>
             <select name="category1" id="category1" required>
-              <option value="">読み込み中...</option>
+              <option value="">選択してください</option>
             </select>
           </div>
 
@@ -1210,7 +1283,7 @@ async function loadStandaloneDetail(id) {
     }
     renderStandaloneDetail(post, posts);
   } catch (error) {
-    console.error('投稿詳細を読み込めませんでした:', error);
+    console.error('投稿詳細を取得できませんでした:', error);
     renderNotFound();
   }
 }
@@ -1250,7 +1323,7 @@ function fileToBase64(file) {
     };
 
     reader.onerror = function() {
-      reject(new Error('画像の読み込みに失敗しました。'));
+      reject(new Error('画像を処理できませんでした。'));
     };
 
     reader.readAsDataURL(file);
